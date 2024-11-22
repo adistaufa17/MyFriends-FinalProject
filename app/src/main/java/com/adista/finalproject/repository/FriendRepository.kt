@@ -1,4 +1,4 @@
-package com.adista.finalproject
+package com.adista.finalproject.repository
 
 import androidx.lifecycle.LiveData
 import com.adista.finalproject.database.Friend

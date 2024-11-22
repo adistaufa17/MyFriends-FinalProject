@@ -1,4 +1,4 @@
-package com.adista.finalproject
+package com.adista.finalproject.base
 
 import android.app.Application
 import com.google.firebase.FirebaseApp

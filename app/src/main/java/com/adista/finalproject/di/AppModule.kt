@@ -1,9 +1,11 @@
-package com.adista.finalproject
+package com.adista.finalproject.di
 
 import android.content.Context
+import com.adista.finalproject.repository.FriendRepository
+import com.adista.finalproject.repository.FriendRepositoryImpl
 import com.adista.finalproject.database.FriendDao
 import com.adista.finalproject.database.MyDatabase
-import com.crocodic.core.CoreSession
+import com.adista.finalproject.session.CoreSession
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

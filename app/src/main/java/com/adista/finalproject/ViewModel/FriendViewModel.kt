@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.ViewModel // Ensure you import ViewModel from androidx.lifecycle
 import androidx.lifecycle.viewModelScope
-import com.adista.finalproject.FriendRepository
+import com.adista.finalproject.repository.FriendRepository
 import com.adista.finalproject.database.Friend
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
