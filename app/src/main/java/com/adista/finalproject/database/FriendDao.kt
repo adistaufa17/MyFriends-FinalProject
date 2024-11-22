@@ -7,9 +7,20 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import kotlinx.coroutines.flow.Flow
 
-@Dao
+@Dao // Make sure this annotation is present.
 interface FriendDao {
+
+    @Query("SELECT * FROM friends") // Adjust table name as necessary.
+    fun getAllFriends(): Flow<List<Friend>>
+
+    @Query("SELECT * FROM friends WHERE id = :id")
+    fun getFriendById(id: Int): LiveData<Friend?>
+
+    @Query("SELECT * FROM friends WHERE name LIKE :keyword")
+    fun searchFriend(keyword: String?): List<Friend>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFriend(friend: Friend)
 
@@ -18,12 +29,4 @@ interface FriendDao {
 
     @Delete
     suspend fun deleteFriend(friend: Friend)
-
-    @Query("SELECT * FROM friends ORDER BY id DESC")
-    fun getAllFriends(): LiveData<List<Friend>>
-
-
-    @Query("SELECT * FROM friends WHERE id = :friendId LIMIT 1")
-    fun getFriendById(friendId: Int): LiveData<Friend?>
 }
-

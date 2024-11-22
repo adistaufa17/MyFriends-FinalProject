@@ -1,4 +1,4 @@
-package com.adista.finalproject.Activity
+package com.adista.finalproject.activity
 
 import android.os.Bundle
 import android.content.Intent

@@ -1,24 +1,24 @@
 package com.adista.finalproject.database
 
-import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import android.content.Context
 
-@Database(entities = [Friend::class], version = 1, exportSchema = false)
-abstract class FriendDatabase : RoomDatabase() {
+@Database(entities =[Friend::class], version = 1)
+abstract class MyDatabase : RoomDatabase() {
     abstract fun friendDao(): FriendDao
 
     companion object {
         @Volatile
-        private var INSTANCE: FriendDatabase? = null
+        private var INSTANCE: MyDatabase? = null
 
-        fun getDatabase(context: Context): FriendDatabase {
+        fun getDatabase(context: Context): MyDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    FriendDatabase::class.java,
-                    "friend_database"
+                    MyDatabase::class.java,
+                    "my_database"
                 ).build()
                 INSTANCE = instance
                 instance

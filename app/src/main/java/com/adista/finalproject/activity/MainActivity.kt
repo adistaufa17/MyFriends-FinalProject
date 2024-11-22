@@ -1,4 +1,5 @@
-package com.adista.finalproject.Activity
+
+package com.adista.finalproject.activity
 
 import android.Manifest
 import android.content.Intent
@@ -16,7 +17,9 @@ import com.adista.finalproject.adapter.FriendAdapter
 import com.adista.finalproject.database.Friend
 import com.adista.finalproject.ViewModel.FriendViewModel
 import com.adista.finalproject.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
     private lateinit var binding: ActivityMainBinding
     private val friendViewModel: FriendViewModel by viewModels()

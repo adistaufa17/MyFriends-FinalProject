@@ -1,10 +1,14 @@
+
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    alias(libs.plugins.androidApplication)
-    alias(libs.plugins.jetbrainsKotlinAndroid)
-    id("kotlin-kapt")
-    id("kotlin-parcelize")
-//    id("com.google.devtools.ksp")
-    id("androidx.navigation.safeargs")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.jetbrains.kotlin.android)
+
+    kotlin("kapt") // Use kapt for annotation processing
+    id("com.google.dagger.hilt.android") // Hilt plugin
+    id("com.google.gms.google-services") // Google services plugin
+    id("com.google.firebase.crashlytics") // Firebase Crashlytics plugin
+    id("kotlin-parcelize") // For parcelable support
 }
 
 android {
@@ -13,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId = "com.adista.finalproject"
-        minSdk = 24
+        minSdk = 27
         targetSdk = 34
         versionCode = 1
         versionName = "1.0.0"
@@ -31,56 +35,62 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 
     buildFeatures {
-        viewBinding = true
-        dataBinding = true
+        viewBinding = true // Enable View Binding
+        dataBinding = true // Enable Data Binding
     }
 }
 
 dependencies {
-    implementation(libs.core.ktx.v1120)
-    implementation(libs.androidx.appcompat.v161)
-    implementation(libs.google.material.v1100)
-    implementation(libs.androidx.constraintlayout)
+    // AndroidX Core Libraries
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
-    implementation(libs.androidx.exifinterface)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit.v115)
-    androidTestImplementation(libs.androidx.espresso.core.v351)
+    implementation(libs.androidx.constraintlayout)
 
-    // ROOM
-    val roomVersion = "2.6.1"
-    implementation(libs.room.runtime)
+    // Material Design Components
+    implementation(libs.material)
+
+    // Lifecycle Components
+    implementation(libs.androidx.lifecycle.viewmodel.ktx.v251)
+    implementation(libs.androidx.lifecycle.livedata.ktx.v251)
+
+    // RecyclerView Support
+    implementation(libs.androidx.recyclerview)
+
+    // Room Database Components
+    implementation(libs.androidx.room.runtime.v250)
+    implementation(libs.room.ktx)
     kapt(libs.room.compiler)
 
-    // Coroutines
-    implementation(libs.kotlinx.coroutines.android)
-    implementation(libs.room.ktx)
+    // Hilt Dependency Injection
+    implementation(libs.hilt.android.v252)
+    kapt(libs.hilt.android.compiler)
 
-    // Navigation
-    val navVersion = "2.7.5"
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
+    // Hilt ViewModel specific dependencies (if needed)
+    implementation(libs.androidx.hilt.navigation.fragment)
 
-    // Life Cycle Arch
-    val lifecycleVersion = "2.6.2"
-    implementation(libs.androidx.lifecycle.viewmodel.ktx.v262)
-    implementation(libs.androidx.lifecycle.livedata.ktx.v262)
-    kapt(libs.androidx.lifecycle.compiler)
+    // Firebase Analytics and Crashlytics
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
 
-    // SDP SSP
-    implementation (libs.ssp.android.v106)
-    implementation (libs.sdp.android.v106)
+    // Data Binding Runtime
+    implementation(libs.androidx.databinding.runtime)
+
+    // Other Libraries (e.g., Glide, SDP, SSP)
+    implementation(libs.sdp.android)
+    implementation(libs.ssp.android)
 }
+
 kapt {
-    correctErrorTypes = true
-    useBuildCache = true
+    correctErrorTypes = true // Enable correct error types for kapt processing
 }
+

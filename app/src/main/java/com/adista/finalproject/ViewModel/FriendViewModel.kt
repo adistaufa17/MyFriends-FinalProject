@@ -1,29 +1,44 @@
 package com.adista.finalproject.ViewModel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.ViewModel // Ensure you import ViewModel from androidx.lifecycle
 import androidx.lifecycle.viewModelScope
+import com.adista.finalproject.FriendRepository
 import com.adista.finalproject.database.Friend
-import com.adista.finalproject.database.FriendDao
-import com.adista.finalproject.database.FriendDatabase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class FriendViewModel(application: Application) : AndroidViewModel(application) {
-    private val friendDao: FriendDao = FriendDatabase.getDatabase(application).friendDao()
-    private val allFriends: LiveData<List<Friend>> = friendDao.getAllFriends()
+@HiltViewModel
+class FriendViewModel @Inject constructor(
+    private val friendRepository: FriendRepository
+) : ViewModel() { // Change this to extend ViewModel
 
+    // Fetch all friends
     fun getAllFriends(): LiveData<List<Friend>> {
-        return allFriends
+        return friendRepository.getAllFriends().asLiveData()
     }
 
+    // Fetch friend by ID
     fun getFriendById(friendId: Int): LiveData<Friend?> {
-        return friendDao.getFriendById(friendId)
+        return friendRepository.getFriendById(friendId)
     }
 
+    // Delete a friend
     fun deleteFriend(friend: Friend) {
         viewModelScope.launch {
-            friendDao.deleteFriend(friend)
+            friendRepository.deleteFriend(friend)
         }
     }
+
+    // Update a friend
+    fun updateFriend(friend: Friend) {
+        viewModelScope.launch {
+            friendRepository.updateFriend(friend)
+        }
+    }
+
+    fun apiLogout() {}
+    fun apiRenewToken() {}
 }

@@ -1,4 +1,4 @@
-package com.adista.finalproject.Activity
+package com.adista.finalproject.activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -19,8 +19,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.adista.finalproject.R
 import com.adista.finalproject.database.Friend
-import com.adista.finalproject.database.FriendDatabase
 import com.adista.finalproject.ViewModel.FriendViewModel
+import com.adista.finalproject.database.MyDatabase
 import com.adista.finalproject.databinding.ActivityEditFriendBinding
 import kotlinx.coroutines.launch
 import java.io.File
@@ -152,7 +152,7 @@ class EditFriendActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             try {
-                val db = FriendDatabase.getDatabase(applicationContext)
+                val db = MyDatabase.getDatabase(applicationContext)
                 db.friendDao().updateFriend(updatedFriend) // Melakukan operasi update pada teman yang ada
                 Toast.makeText(this@EditFriendActivity, "Berhasil update data", Toast.LENGTH_SHORT).show()
 

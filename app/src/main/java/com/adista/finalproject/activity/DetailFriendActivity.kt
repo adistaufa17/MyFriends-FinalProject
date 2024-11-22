@@ -1,4 +1,4 @@
-package com.adista.finalproject.Activity
+package com.adista.finalproject.activity
 
 import android.content.Intent
 import android.graphics.BitmapFactory
