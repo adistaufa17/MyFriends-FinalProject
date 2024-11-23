@@ -13,22 +13,22 @@ class FriendRepositoryImpl @Inject constructor(
 ) : FriendRepository {
 
     override fun getAllFriends(): Flow<List<Friend>> {
-        return friendDao.getAllFriends() // Assuming this method exists in FriendDao
+        return friendDao.getAllFriends()
     }
 
     override fun getFriendById(id: Int): LiveData<Friend?> {
-        return friendDao.getFriendById(id) // Assuming this method exists in FriendDao
+        return friendDao.getFriendById(id)
     }
 
     override suspend fun searchFriend(keyword: String?): List<Friend> {
-        return friendDao.searchFriend(keyword) // Assuming this method exists in FriendDao
+        return friendDao.searchFriend(keyword)
     }
 
     override suspend fun deleteFriend(friend: Friend) {
-        friendDao.deleteFriend(friend) // Assuming this method exists in FriendDao
+        friendDao.deleteFriend(friend)
     }
 
     override suspend fun updateFriend(friend: Friend) {
-        friendDao.updateFriend(friend) // Assuming this method exists in FriendDao
+        friendDao.updateFriend(friend)
     }
 }

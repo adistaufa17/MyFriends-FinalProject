@@ -53,7 +53,7 @@ class EditFriendActivity : AppCompatActivity() {
 
         friendId = intent.getIntExtra("FRIEND_ID", -1)
         if (friendId == -1) {
-            finish() // Close activity if ID is not valid
+            finish()
             return
         }
 

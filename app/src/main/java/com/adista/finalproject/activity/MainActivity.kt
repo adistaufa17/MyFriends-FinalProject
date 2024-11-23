@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
         handlePermissionResults(permissions)
     }
 
-    private lateinit var adapter: FriendAdapter // Declare adapter variable
+    private lateinit var adapter: FriendAdapter
     private var originalData: List<Friend> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
             startActivity(intent)
         }
 
-        adapter = FriendAdapter(this, emptyList(), this) // Initialize the adapter
+        adapter = FriendAdapter(this, emptyList(), this)
 
         binding.rvShowData.adapter = adapter
 

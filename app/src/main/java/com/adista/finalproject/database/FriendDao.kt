@@ -9,10 +9,10 @@ import androidx.room.Query
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
-@Dao // Make sure this annotation is present.
+@Dao
 interface FriendDao {
 
-    @Query("SELECT * FROM friends") // Adjust table name as necessary.
+    @Query("SELECT * FROM friends")
     fun getAllFriends(): Flow<List<Friend>>
 
     @Query("SELECT * FROM friends WHERE id = :id")
