@@ -3,10 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".pertemuan12.ListFriendActivity">
+
+        <RelativeLayout
+            android:id="@+id/Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            style="@style/Toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/TextToolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_50sdp"
+                android:contentDescription="@string/app_name"
+                android:text="@string/my_friends"
+                android:textSize="20sp"
+                tools:ignore="TextSizeCheck,TextContrastCheck" />
+
+
+            <Switch
+                android:id="@+id/switch_night"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_120sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/tv_name"
+                tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+
+        </RelativeLayout>
 
         <EditText
             android:id="@+id/search_bar"
@@ -20,13 +52,13 @@
             android:drawableEnd="@drawable/ic_search"
             android:hint="@string/search"
             android:inputType="text"
-            android:padding="12dp"
+            android:padding="@dimen/_12sdp"
             android:shadowColor="@color/purple"
-            android:textColor="@color/black"
-            android:textColorHint="@color/grey"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Toolbar"
             tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
 
         <ImageView
@@ -34,7 +66,7 @@
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:contentDescription="@string/image_view_not_found"
-            android:padding="5dp"
+            android:padding="@dimen/_5sdp"
             android:visibility="gone"
             android:src="@drawable/not_found"
             app:layout_constraintTop_toBottomOf="@id/search_bar"
@@ -46,7 +78,7 @@
             android:id="@+id/rv_show_data"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:padding="5dp"
+            android:padding="@dimen/_10sdp"
             app:spanCount="2"
             android:clipToPadding="true"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -60,7 +92,7 @@
             android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="@dimen/_30sdp"
             android:contentDescription="@string/button_add"
             android:src="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="parent"

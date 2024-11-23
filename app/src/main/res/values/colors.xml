@@ -7,5 +7,14 @@
     <color name="purple">#6A1B9A</color>
     <color name="grey">#A8A7A7</color>
     <color name="transparent">#00A8A7A7</color>
+    <color name="ivory">#FFF3CA</color>
+    <color name="green_verde">#B4E4D6</color>
+    <color name="malbec">#351F39</color>
+    <color name="bolivia">#047199</color>
+    <color name="blue">#4BBCF4</color>
+    <color name="pink">#FFB6B9</color>
+    <color name="ocean">#BBDED6</color>
+    <color name="seagreen">#61C0BF</color>
+    <color name="pinklight">#6BFFC5BA</color>
 
 </resources>

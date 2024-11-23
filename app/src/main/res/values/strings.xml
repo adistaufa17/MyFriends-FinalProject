@@ -38,4 +38,7 @@
     <string name="input_friend_school">Input Friend School</string>
     <string name="input_friend_name">Input Friend Name</string>
     <string name="image_view_not_found">Image View Not Found</string>
+    <string name="input_friend_phone_number">Input Friend Phone Number</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="my_friends">My Friends</string>
 </resources>

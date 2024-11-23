@@ -1,6 +1,7 @@
 package com.adista.finalproject.di
 
 import android.content.Context
+import androidx.room.Room
 import com.adista.finalproject.repository.FriendRepository
 import com.adista.finalproject.repository.FriendRepositoryImpl
 import com.adista.finalproject.database.FriendDao
@@ -23,8 +24,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providesDatabase(@ApplicationContext appContext: Context): MyDatabase {
-        return MyDatabase.getDatabase(appContext)
+    fun providesDatabase(@ApplicationContext context: Context): MyDatabase {
+        return Room.databaseBuilder(context, MyDatabase::class.java, "my_database")
+            .fallbackToDestructiveMigration()
+            .build()
     }
     @Singleton
     @Provides

@@ -22,13 +22,14 @@ import com.adista.finalproject.database.Friend
 import com.adista.finalproject.ViewModel.FriendViewModel
 import com.adista.finalproject.database.MyDatabase
 import com.adista.finalproject.databinding.ActivityEditFriendBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 
-
+@AndroidEntryPoint
 @Suppress("DEPRECATION")
 class EditFriendActivity : AppCompatActivity() {
 
@@ -142,13 +143,14 @@ class EditFriendActivity : AppCompatActivity() {
         val bio = binding.etBio.text.toString()
         val bitmap = (binding.ivPhoto.drawable as BitmapDrawable).bitmap
         val photoPath = saveImageToInternalStorage(bitmap)
+        val phonenumber = binding.etPhonenumber.text.toString()
 
         if (name.isBlank() || school.isBlank() || photoPath.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val updatedFriend = Friend(friendId, name, school, bio, photoPath) // Membuat objek teman yang diperbarui
+        val updatedFriend = Friend(friendId, name, school, bio, photoPath, phonenumber) // Membuat objek teman yang diperbarui
 
         lifecycleScope.launch {
             try {
@@ -196,6 +198,7 @@ class EditFriendActivity : AppCompatActivity() {
         binding.etName.setText(friend.name)
         binding.etSchool.setText(friend.school)
         binding.etBio.setText(friend.bio)
+        binding.etPhonenumber.setText(friend.phoneNumber)
 
         if (friend.photo.isNotEmpty()) {
             val bitmap = BitmapFactory.decodeFile(friend.photo)

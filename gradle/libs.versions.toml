@@ -81,3 +81,4 @@ androidx-databinding-runtime = { group = "androidx.databinding", name = "databin
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version = "2.6.1" }

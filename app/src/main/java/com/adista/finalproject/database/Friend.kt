@@ -2,6 +2,7 @@ package com.adista.finalproject.database
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -12,10 +13,13 @@ data class Friend(
     val name: String,
     val school: String,
     val bio: String,
-    val photo: String
+    val photo: String,
+    @ColumnInfo(defaultValue = "")
+    var phoneNumber: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
+        parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
@@ -28,6 +32,7 @@ data class Friend(
         parcel.writeString(school)
         parcel.writeString(bio)
         parcel.writeString(photo)
+        parcel.writeString(phoneNumber)
     }
 
     override fun describeContents(): Int {

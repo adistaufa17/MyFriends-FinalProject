@@ -12,7 +12,9 @@ import com.adista.finalproject.R
 import com.adista.finalproject.database.Friend
 import com.adista.finalproject.ViewModel.FriendViewModel
 import com.adista.finalproject.databinding.ActivityDetailFriendBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailFriendActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailFriendBinding
     private var friendId: Int = -1
@@ -35,10 +37,10 @@ class DetailFriendActivity : AppCompatActivity() {
         // Memuat detail teman berdasarkan friendId
         loadFriendDetails(friendId)
 
-        // Menonaktifkan editing pada TextView (field nama, sekolah, dan bio)
         binding.tvName.isEnabled = false
         binding.tvSchool.isEnabled = false
         binding.tvBio.isEnabled = false
+        binding.tvPhonenumber.isEnabled = false
 
         // Ketika tombol edit ditekan, buka EditFriendActivity dan kirim friendId
         binding.btnEdit.setOnClickListener {
@@ -75,6 +77,7 @@ class DetailFriendActivity : AppCompatActivity() {
         binding.tvName.text = friend.name.toEditable()
         binding.tvSchool.text = friend.school.toEditable()
         binding.tvBio.text = friend.bio.toEditable()
+        binding.tvPhonenumber.text = friend.phoneNumber.toEditable()
 
         if (friend.photo.isNotEmpty()) {
             val bitmap = BitmapFactory.decodeFile(friend.photo)

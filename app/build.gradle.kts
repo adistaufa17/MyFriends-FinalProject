@@ -1,14 +1,13 @@
-
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-
-    kotlin("kapt") // Use kapt for annotation processing
-    id("com.google.dagger.hilt.android") // Hilt plugin
-    id("com.google.gms.google-services") // Google services plugin
-    id("com.google.firebase.crashlytics") // Firebase Crashlytics plugin
-    id("kotlin-parcelize") // For parcelable support
+    id("androidx.room") version "2.6.1" // Add this line for Room
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -23,6 +22,7 @@ android {
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -46,6 +46,11 @@ android {
     buildFeatures {
         viewBinding = true // Enable View Binding
         dataBinding = true // Enable Data Binding
+    }
+
+    // Correctly set up Room schema directory
+    room {
+        schemaDirectory("$projectDir/schemas") // This line is not necessary if already set in kapt
     }
 }
 
@@ -91,6 +96,5 @@ dependencies {
 }
 
 kapt {
-    correctErrorTypes = true // Enable correct error types for kapt processing
+    correctErrorTypes = true
 }
-

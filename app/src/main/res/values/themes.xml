@@ -16,4 +16,20 @@
     <style name="search">
         <item name="android:textColorHint">@color/grey</item>
     </style>
+
+    <style name="Toolbar">
+        <item name="android:background">@color/purple_white</item>
+    </style>
+
+    <style name="TextTitle">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="TextToolbar" parent="TextTitle">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

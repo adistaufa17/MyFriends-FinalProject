@@ -127,13 +127,14 @@ class AddFriendActivity : AppCompatActivity() {
         val bio = binding.etBio.text.toString()
         val bitmap = (binding.ivPhoto.drawable as BitmapDrawable).bitmap
         val photoPath = saveImageToInternalStorage(bitmap)
+        val phoneNumber = binding.etPhonenumber.text.toString()
 
-        if (name.isBlank() || school.isBlank() || photoPath.isEmpty()) {
+        if (name.isBlank() || school.isBlank() || photoPath.isEmpty() || phoneNumber.isEmpty()) {
             Toast.makeText(this, "Isi semua kolom!!", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val friend = Friend(name = name, school = school, bio = bio, photo = photoPath)
+        val friend = Friend(name = name, school = school, bio = bio, photo = photoPath, phoneNumber = phoneNumber)
 
         lifecycleScope.launch {
             try {
