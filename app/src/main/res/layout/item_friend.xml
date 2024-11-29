@@ -22,8 +22,8 @@
             android:id="@+id/profile_background"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            app:cardCornerRadius="50dp"
-            app:cardElevation="4dp"
+            app:cardCornerRadius="@dimen/_50sdp"
+            app:cardElevation="@dimen/_4sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">

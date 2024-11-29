@@ -9,7 +9,7 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="460dp"
+        android:layout_height="@dimen/_400sdp"
         android:src="@drawable/welcome"
         android:contentDescription="@string/page_welcome" />
 
@@ -18,14 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/start"
-        android:textSize="30sp"
-        android:layout_margin="15dp"
+        android:textSize="@dimen/_30ssp"
+        android:layout_margin="@dimen/_12sdp"
         android:textStyle="bold" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
         android:text="@string/des"
         tools:ignore="VisualLintLongText" />
 
@@ -33,7 +33,7 @@
         android:id="@+id/btn_Start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_margin="@dimen/_12sdp"
         android:text="@string/start"
         tools:ignore="DuplicateSpeakableTextCheck,VisualLintButtonSize" />
 </LinearLayout>

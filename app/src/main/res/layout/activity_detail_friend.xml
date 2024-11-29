@@ -25,7 +25,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="15dp"
+                    android:layout_margin="@dimen/_15sdp"
                     android:contentDescription="@string/button_back"
                     android:src="@drawable/ic_back"
                     tools:ignore="RedundantDescriptionCheck,TouchTargetSizeCheck" />
@@ -82,10 +82,9 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical"
                 style="@style/bg_all">
 
@@ -93,9 +92,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     style="@style/textfield_input"
-                    app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -113,9 +110,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     style="@style/textfield_input"
-                    app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -133,9 +128,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     style="@style/textfield_input"
-                    app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -153,9 +146,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     style="@style/textfield_input"
-                    app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -168,10 +159,6 @@
                         tools:ignore="VisualLintTextFieldSize" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
-
-
-
         </LinearLayout>
-
     </ScrollView>
 </layout>   

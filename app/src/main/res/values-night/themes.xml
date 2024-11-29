@@ -10,8 +10,7 @@
     <style name="Theme.FinalProject" parent="Base.Theme.FinalProject" />
     <style name="Toolbar">
         <item name="android:background">@drawable/header_gradient_night</item>
-        <item name="android:color">@color/white</item>
-        <item name="android:layout_marginHorizontal">2dp</item>
+        <item name="android:color">@color/white</item>\
     </style>
 
     <style name="search">
@@ -70,10 +69,12 @@
         <item name="android:layout_marginHorizontal">10dp</item>
         <item name="android:backgroundTint">@color/bluedark</item>
         <item name="android:background">@drawable/rounded_bg</item>
+        <item name="boxBackgroundMode">none</item>
+        <item name="android:layout_marginTop">@dimen/_5sdp</item>
     </style>
 
     <style name="btn_camera">
-        <item name="tint">@color/bluedark</item>
+        <item name="tint">@color/seabluewhite</item>
     </style>
 
     <style name="icon_input">

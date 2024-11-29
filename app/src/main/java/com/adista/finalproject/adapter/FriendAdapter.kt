@@ -3,7 +3,6 @@ package com.adista.finalproject.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,34 +18,19 @@ class FriendAdapter(
     private val listener: OnFriendClickListener
 ) : RecyclerView.Adapter<FriendAdapter.FriendViewHolder>() {
 
-    private var originalFriends: List<Friend> = friends // Menyimpan daftar asli
+    private var originalFriends: List<Friend> = friends
 
-    // Interface untuk menangani klik item
     interface OnFriendClickListener {
-        fun onFriendClick(friendId: Int) // Dikirimkan ID teman
+        fun onFriendClick(friendId: Int)
     }
 
     override fun onBindViewHolder(holder: FriendViewHolder, position: Int) {
         val friend = friends[position]
         holder.bind(friend)
 
-        // Set OnClickListener untuk item view
         holder.itemView.setOnClickListener {
-            listener.onFriendClick(friend.id) // Kirim ID teman ke listener
+            listener.onFriendClick(friend.id)
         }
-    }
-
-    fun getData(): List<Friend> {
-        return originalFriends // Mengembalikan data asli (sebelum di-filter)
-    }
-
-    fun getFilteredList(query: String): List<Friend> {
-        Log.d("FriendAdapter", "getFilteredList: query = $query") // Log untuk debug
-        val filteredList = originalFriends.filter { friend ->
-            friend.name.contains(query, ignoreCase = true)
-        }
-        Log.d("FriendAdapter", "getFilteredList: filteredList.size = ${filteredList.size}") // Log untuk debug
-        return filteredList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendViewHolder {
@@ -62,7 +46,6 @@ class FriendAdapter(
         private val schoolTextView = itemView.findViewById<TextView>(R.id.tv_school)
 
         fun bind(friend: Friend) {
-            // Set text fields
             val photoPath = friend.photo
 
             if (photoPath.isNotEmpty()) {
@@ -83,9 +66,8 @@ class FriendAdapter(
 
     @SuppressLint("NotifyDataSetChanged")
     fun updateData(newFriends: List<Friend>) {
-        Log.d("FriendAdapter", "updateData: newFriends.size = ${newFriends.size}") // Log untuk debug
         this.friends = newFriends
-        this.originalFriends = newFriends // Simpan data baru sebagai data asli
+        this.originalFriends = newFriends
         notifyDataSetChanged()
     }
 }

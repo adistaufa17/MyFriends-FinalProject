@@ -34,7 +34,6 @@ class DetailFriendActivity : AppCompatActivity() {
             return
         }
 
-        // Memuat detail teman berdasarkan friendId
         loadFriendDetails(friendId)
 
         binding.tvName.isEnabled = false
@@ -42,26 +41,22 @@ class DetailFriendActivity : AppCompatActivity() {
         binding.tvBio.isEnabled = false
         binding.tvPhonenumber.isEnabled = false
 
-        // Ketika tombol edit ditekan, buka EditFriendActivity dan kirim friendId
         binding.btnEdit.setOnClickListener {
             val intent = Intent(this, EditFriendActivity::class.java)
             intent.putExtra("FRIEND_ID", friendId)
             startActivity(intent)
         }
 
-        // Ketika tombol delete ditekan, tampilkan dialog konfirmasi penghapusan
         binding.btnDelete.setOnClickListener {
             showDeleteConfirmationDialog()
         }
 
-        // Ketika tombol back ditekan, kembali ke MainActivity
         binding.btnBack.setOnClickListener {
             val destination = Intent(this, MainActivity::class.java)
             startActivity(destination)
         }
     }
 
-    // Fungsi untuk memuat detail teman berdasarkan ID
     private fun loadFriendDetails(friendId: Int) {
         friendViewModel.getFriendById(friendId).observe(this) { friend ->
             if (friend != null) {
@@ -72,7 +67,6 @@ class DetailFriendActivity : AppCompatActivity() {
         }
     }
 
-    // Fungsi untuk menampilkan detail teman pada tampilan (TextView dan ImageView)
     private fun bindFriendDetails(friend: Friend) {
         binding.tvName.text = friend.name.toEditable()
         binding.tvSchool.text = friend.school.toEditable()
@@ -91,11 +85,10 @@ class DetailFriendActivity : AppCompatActivity() {
         }
     }
 
-    // Fungsi untuk menampilkan dialog konfirmasi penghapusan teman
     private fun showDeleteConfirmationDialog() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Hapus Teman")
-        builder.setMessage("Apakah Anda yakin ingin menghapus informasi teman ini?") // Pesan konfirmasi
+        builder.setMessage("Apakah Anda yakin ingin menghapus informasi teman ini?")
         builder.setPositiveButton("Remove") { _, _ ->
             deleteFriend()
         }

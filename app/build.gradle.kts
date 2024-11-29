@@ -80,7 +80,7 @@ dependencies {
     implementation(libs.hilt.android.v252)
     kapt(libs.hilt.android.compiler)
 
-    // Hilt ViewModel specific dependencies (if needed)
+    // Hilt viewModel specific dependencies (if needed)
     implementation(libs.androidx.hilt.navigation.fragment)
 
     // Firebase Analytics and Crashlytics

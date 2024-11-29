@@ -25,7 +25,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="15dp"
+                    android:layout_margin="@dimen/_15sdp"
                     android:contentDescription="@string/button_back"
                     android:src="@drawable/ic_back"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,RedundantDescriptionCheck" />
@@ -36,7 +36,7 @@
                     android:layout_gravity="center"
                     style="@style/SubTextTittle"
                     android:text="@string/add_friend"
-                    android:textSize="23sp"/>
+                    android:textSize="@dimen/_20ssp"/>
 
                 <ImageButton
                     android:id="@+id/btn_save"
@@ -114,7 +114,6 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     style="@style/textfield_input"
                     app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
@@ -134,7 +133,6 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     style="@style/textfield_input"
                     app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
@@ -167,11 +165,7 @@
                         tools:ignore="VisualLintTextFieldSize" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-
             </LinearLayout>
-
-
         </LinearLayout>
-
     </ScrollView>
 </layout>
