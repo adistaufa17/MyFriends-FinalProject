@@ -3,18 +3,33 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white1">#D9D2D2</color>
-    <color name="purple_white">#EBDDFF</color>
+    <color name="purple_white">#EADBFF</color>
     <color name="purple">#6A1B9A</color>
+    <color name="purple_light">#9B51E0</color>
     <color name="grey">#A8A7A7</color>
     <color name="transparent">#00A8A7A7</color>
     <color name="ivory">#FFF3CA</color>
     <color name="green_verde">#B4E4D6</color>
     <color name="malbec">#351F39</color>
     <color name="bolivia">#047199</color>
-    <color name="blue">#4BBCF4</color>
+    <color name="blue">#CDEAFA</color>
     <color name="pink">#FFB6B9</color>
     <color name="ocean">#BBDED6</color>
     <color name="seagreen">#61C0BF</color>
     <color name="pinklight">#6BFFC5BA</color>
+    <color name="graylight">#EDECEC</color>
+
+    <color name="seablue">#4C8492</color>
+    <color name="seabluelight">#88B5BF</color>
+    <color name="seabluewhite">#E5EEF1</color>
+    <color name="seabluemedium">#B0CCD4</color>
+
+    <color name="blueblackdark">#1B262C</color>//header
+    <color name="bluedark">#0F4C75</color>//profilebg
+    <color name="bluedarklittleblue">#152028</color>//bgcamera
+    <color name="bluegraydark">#2C3E50</color>//formbg
+    <color name="bluedark2">#1E2A3A</color>//input
+
+    <color name="purplee">#5649BF</color>
 
 </resources>

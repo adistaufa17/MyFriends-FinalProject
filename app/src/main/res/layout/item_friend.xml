@@ -4,48 +4,63 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/_125sdp"
-        android:layout_height="@dimen/_175sdp"
-        android:layout_margin="@dimen/_10sdp"
-        android:focusable="true"
-        app:cardCornerRadius="@dimen/_12sdp"
-        android:foreground="?attr/selectableItemBackground"
-        android:clickable="true">
-        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_8sdp"
+        app:cardCornerRadius="@dimen/_15sdp"
+        app:cardElevation="@dimen/_4sdp"
+        style="@style/item_card">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_12sdp"
+            style="@style/item_card">
+
+            <!-- Profile Circle -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_background"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            app:cardCornerRadius="50dp"
+            app:cardElevation="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Default Profile Image -->
+        <ImageView
+            android:id="@+id/iv_photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            style="@style/card">
+            android:src="@drawable/ic_person"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/profile_picture"/>
+    </androidx.cardview.widget.CardView>
 
-            <ImageView
-                android:id="@+id/iv_photo"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_125sdp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/photo_friend"
-                android:src="@drawable/profile"
-                android:scaleType="centerCrop"/>
-
+    <!-- Name -->
             <TextView
                 android:id="@+id/tv_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="@dimen/_3sdp"
-                android:text="@string/friendname"
-                android:textStyle="bold"
-                android:textSize="@dimen/_13ssp"
-                style="@style/card"/>
+                style="@style/item_card_name"
+                app:layout_constraintStart_toEndOf="@id/profile_background"
+                app:layout_constraintTop_toTopOf="@id/profile_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Jessica Parker"/>
 
             <TextView
                 android:id="@+id/tv_school"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:text="@string/schooll"
-                android:textColor="@android:color/darker_gray"
-                tools:ignore="TextContrastCheck"
-                android:textSize="@dimen/_10ssp"/>
-        </LinearLayout>
+                android:layout_marginStart="@dimen/_12sdp"
+                style="@style/item_card_school"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                app:layout_constraintStart_toEndOf="@id/profile_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="School"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 </layout>

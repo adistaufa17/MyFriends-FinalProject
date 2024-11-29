@@ -16,7 +16,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                style="@style/Toolbar">
 
                 <ImageButton
                     android:id="@+id/btn_back"
@@ -33,6 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    style="@style/SubTextTittle"
                     android:text="@string/add_friend"
                     android:textSize="23sp"/>
 
@@ -42,8 +44,6 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:layout_marginStart="@dimen/_130sdp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
                     android:contentDescription="@string/button_save"
                     android:src="@drawable/ic_save"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -60,45 +60,52 @@
                     android:layout_height="@dimen/_295sdp"
                     android:contentDescription="@string/image_profile"
                     android:src="@drawable/profile"
+                    android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="ImageContrastCheck,VisualLintBounds" />
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/btn_add"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="25dp"
-                    android:contentDescription="@string/button_add"
+                <ImageButton
+                    android:id="@+id/btn_camera"
+                    style="@style/btn_camera"
+                    android:layout_width="@dimen/_170sdp"
+                    android:layout_height="@dimen/_170sdp"
+                    android:layout_marginBottom="@dimen/_30sdp"
+                    android:background="@drawable/ic_camera_round"
+                    android:contentDescription="@string/button_camera"
+                    android:padding="@dimen/_50sdp"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/ic_camera"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck" />
-
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/iv_photo"
+                    tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                style="@style/bg_all">
 
                 <!-- Name -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="16dp">
+                    style="@style/textfield_input"
+                    app:boxBackgroundMode="none">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_person"
-                        android:drawablePadding="8dp"
                         android:hint="@string/input_friend_name"
+                        android:drawableStart="@drawable/ic_person"
+                        style="@style/bg_textinput"
                         tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -107,8 +114,9 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="5dp"
+                    style="@style/textfield_input"
+                    app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -116,8 +124,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_school"
-                        android:drawablePadding="8dp"
                         android:hint="@string/input_friend_school"
+                        style="@style/bg_textinput"
                         tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -126,8 +134,9 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="5dp"
+                    style="@style/textfield_input"
+                    app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -135,7 +144,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_info"
-                        android:drawablePadding="8dp"
+                        style="@style/bg_textinput"
                         android:hint="@string/input_friend_bio"
                         tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
 
@@ -144,8 +153,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="16dp"
+                    style="@style/textfield_input"
+                    app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -153,8 +162,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_phonenumber"
-                        android:drawablePadding="8dp"
-                        android:hint="@string/input_friend_phone_number" />
+                        style="@style/bg_textinput"
+                        android:hint="@string/input_friend_phone_number"
+                        tools:ignore="VisualLintTextFieldSize" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,16 +1,88 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.FinalProject" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Base.Theme.FinalProject" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.FinalProject" parent="Base.Theme.FinalProject" />
+    <style name="Toolbar">
+        <item name="android:background">@drawable/header_gradient_night</item>
+        <item name="android:color">@color/white</item>
+        <item name="android:layout_marginHorizontal">2dp</item>
+    </style>
+
+    <style name="search">
+        <item name="drawableTint">@color/seabluewhite</item>
+        <item name="android:textColorHint">@color/seabluewhite</item>
+        <item name="cardBackgroundColor">@color/purplee</item>
     </style>
 
     <style name="AppButtonMenu">
         <item name="android:background">@color/transparent</item>
         <item name="android:tint">@color/white</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
-    <style name="search">
-        <item name="android:textColorHint">@color/black</item>
+    <style name="TextTitle">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginStart">@dimen/_24sdp</item>
+        <item name="android:layout_marginTop">@dimen/_24sdp</item>
+        <item name="android:textColor">@color/seabluewhite</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/_20ssp</item>
+    </style>
+
+    <style name="SubTextTittle">
+        <item name="android:textColor">@color/seabluewhite</item>
+    </style>
+
+    <style name="bg_all">
+        <item name="android:background">@color/bluedarklittleblue</item>
+    </style>
+
+    <style name="bg_textinput">
+        <item name="android:backgroundTint">@color/bluedark</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="drawableTint">@color/seabluewhite</item>
+    </style>
+
+    <style name="item_card">
+        <item name="android:background">@color/bluedark2</item>
+    </style>
+
+    <style name="item_card_name">
+        <item name="android:textSize">@dimen/_16ssp</item>
+        <item name="android:textColor">@color/ocean</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">@dimen/_12sdp</item>
+    </style>
+
+    <style name="item_card_school">
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColor">@color/seabluelight</item>
+    </style>
+
+    <style name="textfield_input">
+        <item name="android:layout_marginVertical">5dp</item>
+        <item name="android:layout_marginHorizontal">10dp</item>
+        <item name="android:backgroundTint">@color/bluedark</item>
+        <item name="android:background">@drawable/rounded_bg</item>
+    </style>
+
+    <style name="btn_camera">
+        <item name="tint">@color/bluedark</item>
+    </style>
+
+    <style name="icon_input">
+        <item name="android:color">@color/bolivia</item>
+    </style>
+
+    <style name="btn_add">
+        <item name="tint">@color/white</item>
+        <item name="backgroundTint">@color/bluedark</item>app:backgroundTint="@color/seagreen"
+        <item name="android:layout_margin">@dimen/_30sdp</item>
     </style>
 </resources>

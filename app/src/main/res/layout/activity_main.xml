@@ -3,63 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".pertemuan12.ListFriendActivity">
 
-        <RelativeLayout
-            android:id="@+id/Toolbar"
+        <!-- Header with Gradient -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header_layout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
+            android:layout_height="@dimen/_120sdp"
             style="@style/Toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/tv_name"
-                style="@style/TextToolbar"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_50sdp"
-                android:contentDescription="@string/app_name"
+                android:layout_height="wrap_content"
                 android:text="@string/my_friends"
-                android:textSize="20sp"
-                tools:ignore="TextSizeCheck,TextContrastCheck" />
-
+                style="@style/TextTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Switch
                 android:id="@+id/switch_night"
-                android:layout_width="@dimen/_100sdp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_120sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_toEndOf="@+id/tv_name"
-                tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
+                android:layout_marginEnd="@dimen/_24sdp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_name"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
 
-        </RelativeLayout>
+            <!-- Search Bar -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/search_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginHorizontal="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                app:cardCornerRadius="@dimen/_25sdp"
+                app:cardElevation="@dimen/_4sdp"
+                style="@style/search"
+                app:layout_constraintTop_toBottomOf="@id/tv_name">
 
-        <EditText
-            android:id="@+id/search_bar"
-            style="@style/search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_10sdp"
-            android:layout_marginHorizontal="@dimen/_10sdp"
-            android:autofillHints="@string/search"
-            android:background="@drawable/bg_search"
-            android:drawableEnd="@drawable/ic_search"
-            android:hint="@string/search"
-            android:inputType="text"
-            android:padding="@dimen/_12sdp"
-            android:shadowColor="@color/purple"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/Toolbar"
-            tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+                <EditText
+                    android:id="@+id/search_bar"
+                    style="@style/search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints=""
+                    android:background="@null"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:hint="@string/search"
+                    android:inputType="text"
+                    android:paddingHorizontal="@dimen/_20sdp"
+                    tools:ignore="TextContrastCheck,VisualLintTextFieldSize" />
+
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/ivNotFound"
@@ -69,38 +74,35 @@
             android:padding="@dimen/_5sdp"
             android:visibility="gone"
             android:src="@drawable/not_found"
-            app:layout_constraintTop_toBottomOf="@id/search_bar"
+            app:layout_constraintTop_toBottomOf="@id/header_layout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/rv_show_data"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_show_data"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:clipToPadding="false"
             android:padding="@dimen/_10sdp"
-            app:spanCount="2"
-            android:clipToPadding="true"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/ivNotFound"
+            style="@style/bg_all"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_layout"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_friend" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btn_add"
+            style="@style/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_30sdp"
             android:contentDescription="@string/button_add"
             android:src="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:ignore="RedundantDescriptionCheck" />
-
+            tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </layout>

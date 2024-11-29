@@ -16,7 +16,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                style="@style/Toolbar">
 
                 <ImageButton
                     android:id="@+id/btn_back"
@@ -25,7 +26,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="15dp"
-                    android:background="@color/white"
                     android:contentDescription="@string/button_back"
                     android:src="@drawable/ic_back"
                     tools:ignore="RedundantDescriptionCheck,TouchTargetSizeCheck" />
@@ -36,7 +36,8 @@
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/_5sdp"
                     android:text="@string/detail_friend"
-                    android:textSize="@dimen/_17ssp"/>
+                    android:textSize="@dimen/_17ssp"
+                    style="@style/SubTextTittle"/>
 
                 <ImageButton
                     android:id="@+id/btn_edit"
@@ -44,7 +45,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_100sdp"
-                    android:layout_marginTop="15dp"
                     android:contentDescription="@string/button_edit"
                     android:src="@drawable/ic_edit"
                     tools:ignore="TouchTargetSizeCheck,RedundantDescriptionCheck" />
@@ -55,8 +55,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_6sdp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
                     android:contentDescription="@string/button_delete"
                     android:src="@drawable/ic_delete"
                     tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck,TouchTargetSizeCheck" />
@@ -71,14 +69,15 @@
                     android:id="@+id/iv_photo"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_295sdp"
-                    android:contentDescription="@string/photo_friend"
+                    android:contentDescription="@string/image_profile"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/profile"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintVertical_bias="1.0"
                     tools:ignore="ImageContrastCheck,VisualLintBounds" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -87,15 +86,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                style="@style/bg_all">
 
                 <!-- Name -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="16dp"
+                    style="@style/textfield_input"
                     app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
@@ -105,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/name"
                         android:drawableStart="@drawable/ic_person"
-                        android:drawablePadding="8dp"
+                        style="@style/bg_textinput"
                         tools:ignore="VisualLintTextFieldSize" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,8 +113,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="5dp"
+                    style="@style/textfield_input"
                     app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
@@ -125,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/school"
                         android:drawableStart="@drawable/ic_school"
-                        android:drawablePadding="8dp"
+                        style="@style/bg_textinput"
                         tools:ignore="VisualLintTextFieldSize" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,8 +133,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="5dp"
+                    style="@style/textfield_input"
                     app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
@@ -145,7 +144,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/bio"
                         android:drawableStart="@drawable/ic_info"
-                        android:drawablePadding="8dp"
+                        style="@style/bg_textinput"
                         tools:ignore="VisualLintTextFieldSize" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -154,8 +153,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="5dp"
+                    style="@style/textfield_input"
                     app:boxBackgroundMode="none"
                     tools:ignore="VisualLintBounds">
 
@@ -165,7 +164,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/phone_number"
                         android:drawableStart="@drawable/ic_phonenumber"
-                        android:drawablePadding="8dp"
+                        style="@style/bg_textinput"
                         tools:ignore="VisualLintTextFieldSize" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>

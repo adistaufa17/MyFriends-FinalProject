@@ -45,7 +45,7 @@ class AddFriendActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btnAdd.setOnClickListener {
+        binding.btnCamera.setOnClickListener {
             showImagePickerDialog()
         }
 

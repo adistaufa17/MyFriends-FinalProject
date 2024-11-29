@@ -10,42 +10,40 @@
         <LinearLayout
             android:id="@+id/main"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/grey">
+                style="@style/Toolbar">
 
                 <ImageButton
                     android:id="@+id/btn_back"
                     style="@style/AppButtonMenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
                     android:layout_gravity="center"
-                    android:background="@color/white"
+                    android:layout_margin="15dp"
                     android:contentDescription="@string/button_back"
                     android:src="@drawable/ic_back"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,DuplicateSpeakableTextCheck" />
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,RedundantDescriptionCheck" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
                     android:text="@string/edit_friend"
-                    android:textSize="23sp"/>
+                    android:textSize="23sp"
+                    style="@style/SubTextTittle"/>
 
                 <ImageButton
                     android:id="@+id/btn_save"
                     style="@style/AppButtonMenu"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
-                    android:layout_marginStart="@dimen/_140sdp"
+                    android:layout_marginStart="@dimen/_130sdp"
                     android:layout_marginTop="15dp"
-                    android:background="@color/white"
                     android:contentDescription="@string/button_save"
                     android:src="@drawable/ic_save"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -59,9 +57,10 @@
                 <ImageView
                     android:id="@+id/iv_photo"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:contentDescription="@string/photo_friend"
+                    android:layout_height="@dimen/_295sdp"
+                    android:contentDescription="@string/image_profile"
                     android:src="@drawable/profile"
+                    android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +69,7 @@
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btn_camera"
+                    style="@style/btn_camera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="25dp"
@@ -77,7 +77,7 @@
                     android:src="@drawable/ic_camera"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -85,21 +85,21 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                style="@style/bg_all">
 
                 <!-- Name -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="16dp">
+                    style="@style/textfield_input">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_person"
-                        android:drawablePadding="8dp"
+                        style="@style/bg_textinput"
                         android:hint="@string/name"
                         tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -109,15 +109,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="16dp">
+                    style="@style/textfield_input">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_school"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_school"
-                        android:drawablePadding="8dp"
+                        style="@style/bg_textinput"
                         android:hint="@string/school"
                         tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -127,15 +126,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="16dp">
+                    style="@style/textfield_input">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_bio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_info"
-                        android:drawablePadding="8dp"
+                        style="@style/bg_textinput"
                         android:hint="@string/bio"
                         tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -144,15 +142,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginBottom="16dp">
+                    style="@style/textfield_input">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/et_phonenumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableStart="@drawable/ic_phonenumber"
-                        android:drawablePadding="8dp"
+                        style="@style/bg_textinput"
                         android:hint="@string/phone_number"
                         tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
