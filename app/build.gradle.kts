@@ -60,6 +60,9 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    implementation(libs.androidcoreproject.v300beta7)
 
     // Material Design Components
     implementation(libs.material)
@@ -74,6 +77,7 @@ dependencies {
     // Room Database Components
     implementation(libs.androidx.room.runtime.v250)
     implementation(libs.room.ktx)
+    implementation(libs.play.services.analytics.impl)
     kapt(libs.room.compiler)
 
     // Hilt Dependency Injection
@@ -90,9 +94,17 @@ dependencies {
     // Data Binding Runtime
     implementation(libs.androidx.databinding.runtime)
 
+    // Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    implementation(libs.coreCrocodic)
+
     // Other Libraries (e.g., Glide, SDP, SSP)
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)
+
+
 }
 
 kapt {

@@ -1,24 +1,21 @@
 package com.adista.finalproject.activity
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.adista.finalproject.adapter.FriendAdapter
-import com.adista.finalproject.database.Friend
+import com.adista.finalproject.data.DataProduct
 import com.adista.finalproject.ViewModel.FriendViewModel
 import com.adista.finalproject.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
@@ -26,9 +23,7 @@ class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
     private lateinit var binding: ActivityMainBinding
     private val friendViewModel: FriendViewModel by viewModels()
     private lateinit var adapter: FriendAdapter
-    private var originalData: List<Friend> = emptyList()
-
-    private lateinit var requestPermissionLauncher: ActivityResultLauncher<Array<String>>
+    private var productList = ArrayList<DataProduct>() // Untuk menyimpan data produk
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,15 +31,9 @@ class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-            handlePermissionResults(permissions)
-        }
-
         binding.switchNight.setOnCheckedChangeListener { _, isChecked ->
             switchMode(isChecked)
         }
-
-        checkAndRequestPermissions()
 
         binding.btnAdd.setOnClickListener {
             val intent = Intent(this, AddFriendActivity::class.java)
@@ -55,21 +44,25 @@ class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
         adapter = FriendAdapter(this, emptyList(), this)
         binding.rvShowData.adapter = adapter
 
-        friendViewModel.getAllFriends().observe(this) { friends ->
-            originalData = friends
-            adapter.updateData(friends)
+        lifecycleScope.launch {
+            friendViewModel.product.collect { products ->
+                productList = products as ArrayList<DataProduct>
+                adapter.updateData(products)
+            }
         }
+
+        friendViewModel.getProduct()
 
         binding.searchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (s.toString().isEmpty()) {
-                    adapter.updateData(originalData)
+                    adapter.updateData(productList)
                     binding.ivNotFound.visibility = View.GONE
                     binding.rvShowData.visibility = View.VISIBLE
                 } else {
-                    filterFriends(s.toString())
+                    filterProducts(s.toString())
                 }
             }
 
@@ -77,42 +70,13 @@ class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
         })
     }
 
-    private fun checkAndRequestPermissions() {
-        val permissions = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-            arrayOf(Manifest.permission.CAMERA)
-        } else {
-            arrayOf(
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.CAMERA
-            )
-        }
-
-        val deniedPermissions = permissions.filter { permission ->
-            ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED
-        }
-
-        if (deniedPermissions.isNotEmpty()) {
-            requestPermissionLauncher.launch(deniedPermissions.toTypedArray())
-        }
-    }
-
-    private fun handlePermissionResults(permissions: Map<String, Boolean>) {
-        val deniedPermissions = permissions.filter { !it.value }
-
-        if (deniedPermissions.isEmpty()) {
-            Toast.makeText(this, "Semua izin diberikan.", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "Beberapa izin ditolak: ${deniedPermissions.keys.joinToString()}", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun filterFriends(query: String) {
-        val filteredList = originalData.filter { it.name.contains(query, ignoreCase = true) }
+    private fun filterProducts(query: String) {
+        val filteredList = productList.filter { it.title.contains(query, ignoreCase = true) }
 
         if (filteredList.isEmpty()) {
             binding.ivNotFound.visibility = View.VISIBLE
             binding.rvShowData.visibility = View.GONE
-            Toast.makeText(this, "Friend Not Found", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Product Not Found", Toast.LENGTH_SHORT).show()
         } else {
             binding.ivNotFound.visibility = View.GONE
             binding.rvShowData.visibility = View.VISIBLE
@@ -120,9 +84,9 @@ class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
         }
     }
 
-    override fun onFriendClick(friendId: Int) {
+    override fun onFriendClick(itemId: Int) {
         val intent = Intent(this, DetailFriendActivity::class.java)
-        intent.putExtra("FRIEND_ID", friendId)
+        intent.putExtra("PRODUCT_ID", itemId)
         startActivity(intent)
     }
 
