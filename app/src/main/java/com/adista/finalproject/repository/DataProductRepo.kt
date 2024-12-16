@@ -7,4 +7,8 @@ import kotlinx.coroutines.flow.Flow
 interface DataProductRepo {
     @SerializedName("products")
     fun getProducts(keyword: String): Flow<List<DataProduct>>
+
+    fun sortProducts(sortBy: String, order: String): Flow<List<DataProduct>>
+
+    fun filterProducts(filter: String): Flow<List<DataProduct>>
 }

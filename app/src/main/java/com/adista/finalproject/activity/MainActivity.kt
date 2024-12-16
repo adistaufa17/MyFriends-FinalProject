@@ -68,7 +68,27 @@ class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
 
             override fun afterTextChanged(s: Editable?) {}
         })
+
+
+        binding.ftbnFilter.setOnClickListener {
+            val btmSht = BottomSheetFilterProducts { filter ->
+                viewModel.filterProducts(filter)
+            }
+
+            btmSht.show(supportFragmentManager, "BtmShtFilteringProducts")
+        }
+
+
+        binding.ftbnSort.setOnClickListener {
+            val btmSht = BottomSheetSortingProducts { sortBy, order ->
+                viewModel.sortProducts(sortBy, order)
+            }
+
+            btmSht.show(supportFragmentManager, "BtmShtSortingProducts")
+        }
     }
+
+
 
     private fun filterProducts(query: String) {
         val filteredList = productList.filter { it.title.contains(query, ignoreCase = true) }
@@ -83,6 +103,8 @@ class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
             adapter.updateData(filteredList)
         }
     }
+
+
 
     override fun onFriendClick(itemId: Int) {
         val intent = Intent(this, DetailFriendActivity::class.java)
