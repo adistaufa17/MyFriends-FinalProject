@@ -9,20 +9,19 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class ImplDataProductRepo @Inject constructor(private val apiServiceProduct: ApiServiceProduct) : DataProductRepo{
-    override fun getProducts(keyword: String): Flow<List<DataProduct>> = flow{
-       ApiObserver.run(
-            { apiServiceProduct.getProducts(keyword)},
+    override fun getProducts(keyword: String): Flow<List<DataProduct>> = flow {
+        ApiObserver.run(
+            { apiServiceProduct.getProducts(keyword) },
             false,
             object : ApiObserver.ModelResponseListener<ResponseDataProduct> {
                 override suspend fun onSuccess(response: ResponseDataProduct) {
                     emit(response.products)
                 }
 
-                override suspend fun onError(response: ResponseDataProduct){
+                override suspend fun onError(response: ResponseDataProduct) {
                     emit(emptyList())
                 }
-            }
-        )
+            })
     }
 
     override fun sortProducts(sortBy: String, order: String): Flow<List<DataProduct>> = flow {

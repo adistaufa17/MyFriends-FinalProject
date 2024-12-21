@@ -42,4 +42,10 @@
     <string name="phone_number">Phone Number</string>
     <string name="my_friends">My Friends</string>
     <string name="profile_picture">Profile picture</string>
+    <string name="filter_products">Filter Products</string>
+    <string name="tops">Tops</string>
+    <string name="vehicle">Vehicle</string>
+    <string name="laptops">Laptops</string>
+    <string name="motorcycle">Motorcycle</string>
+    <string name="simpan">Simpan</string>
 </resources>

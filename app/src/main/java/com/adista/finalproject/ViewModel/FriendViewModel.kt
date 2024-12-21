@@ -23,12 +23,23 @@ class FriendViewModel @Inject constructor(
     private val _product = MutableSharedFlow<List<DataProduct>>()
     val product = _product.asSharedFlow()
 
-    fun getProduct(keyword: String = "") = viewModelScope.launch {
+    fun getProducts(keyword: String = "") = viewModelScope.launch {
         dataProductRepo.getProducts(keyword).collect {
             _product.emit(it)
         }
     }
 
+    fun sortProducts(sortBy: String = "", orderBy: String = "") = viewModelScope.launch {
+        dataProductRepo.sortProducts(sortBy, orderBy).collect {
+            _product.emit(it)
+        }
+    }
+
+    fun filterProducts(filter: String = "") = viewModelScope.launch {
+        dataProductRepo.filterProducts(filter).collect {
+            _product.emit(it)
+        }
+    }
 
     fun getAllFriends(): LiveData<List<Friend>> {
         return friendRepository.getAllFriends().asLiveData()

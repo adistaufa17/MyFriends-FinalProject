@@ -6,89 +6,96 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.adista.finalproject.adapter.FriendAdapter
-import com.adista.finalproject.data.DataProduct
+import com.adista.finalproject.R
 import com.adista.finalproject.ViewModel.FriendViewModel
+import com.adista.finalproject.adapter.FriendAdapter
+import com.adista.finalproject.btm_sht.BottomSheetFilterProducts
+import com.adista.finalproject.btm_sht.BottomSheetSortingProducts
+import com.adista.finalproject.data.DataProduct
 import com.adista.finalproject.databinding.ActivityMainBinding
+import com.adista.finalproject.databinding.ItemFriendBinding
+import com.crocodic.core.base.activity.CoreActivity
+import com.crocodic.core.base.adapter.ReactiveListAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
+class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout.activity_main), FriendAdapter.OnFriendClickListener {
 
-    private lateinit var binding: ActivityMainBinding
     private val friendViewModel: FriendViewModel by viewModels()
     private lateinit var adapter: FriendAdapter
     private var productList = ArrayList<DataProduct>() // Untuk menyimpan data produk
 
+
+    private val adapterCore by lazy {
+        ReactiveListAdapter<ItemFriendBinding, DataProduct>(R.layout.item_friend)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+
+        enableEdgeToEdge()
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
         binding.switchNight.setOnCheckedChangeListener { _, isChecked ->
             switchMode(isChecked)
         }
 
-        binding.btnAdd.setOnClickListener {
-            val intent = Intent(this, AddFriendActivity::class.java)
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            startActivity(intent)
-        }
-
         adapter = FriendAdapter(this, emptyList(), this)
-        binding.rvShowData.adapter = adapter
+        binding.rvShowData.adapter = adapterCore
+
+        // Panggil getProduct untuk mendapatkan semua produk awal
+        friendViewModel.getProducts()
 
         lifecycleScope.launch {
-            friendViewModel.product.collect { products ->
-                productList = products as ArrayList<DataProduct>
-                adapter.updateData(products)
+            friendViewModel.product.collect { data ->
+                productList = data as ArrayList<DataProduct> // Simpan data produk
+                adapterCore.submitList(data)
             }
         }
-
-        friendViewModel.getProduct()
 
         binding.searchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.toString().isEmpty()) {
-                    adapter.updateData(productList)
+                val keyword = s.toString().trim()
+                if (keyword.isEmpty()) {
+                    adapterCore.submitList(productList) // Tampilkan semua produk
                     binding.ivNotFound.visibility = View.GONE
                     binding.rvShowData.visibility = View.VISIBLE
                 } else {
-                    filterProducts(s.toString())
+                    filterProducts(keyword) // Panggil filterProducts dengan keyword
                 }
             }
 
             override fun afterTextChanged(s: Editable?) {}
         })
 
-
-        binding.ftbnFilter.setOnClickListener {
+        binding.fbtnFilter.setOnClickListener {
             val btmSht = BottomSheetFilterProducts { filter ->
-                viewModel.filterProducts(filter)
+                friendViewModel.filterProducts(filter)
             }
-
             btmSht.show(supportFragmentManager, "BtmShtFilteringProducts")
         }
 
-
-        binding.ftbnSort.setOnClickListener {
+        binding.fbtnSort.setOnClickListener {
             val btmSht = BottomSheetSortingProducts { sortBy, order ->
-                viewModel.sortProducts(sortBy, order)
+                friendViewModel.sortProducts(sortBy, order)
             }
-
             btmSht.show(supportFragmentManager, "BtmShtSortingProducts")
         }
     }
-
-
 
     private fun filterProducts(query: String) {
         val filteredList = productList.filter { it.title.contains(query, ignoreCase = true) }
@@ -100,11 +107,9 @@ class MainActivity : AppCompatActivity(), FriendAdapter.OnFriendClickListener {
         } else {
             binding.ivNotFound.visibility = View.GONE
             binding.rvShowData.visibility = View.VISIBLE
-            adapter.updateData(filteredList)
+            adapterCore.submitList(filteredList) // Update adapter dengan daftar yang difilter
         }
     }
-
-
 
     override fun onFriendClick(itemId: Int) {
         val intent = Intent(this, DetailFriendActivity::class.java)
