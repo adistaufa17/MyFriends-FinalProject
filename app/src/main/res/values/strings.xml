@@ -48,4 +48,10 @@
     <string name="laptops">Laptops</string>
     <string name="motorcycle">Motorcycle</string>
     <string name="simpan">Simpan</string>
+    <string name="sorting_products">Sorting Products</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="order_products">Order Products</string>
+    <string name="ascending">Ascending</string>
+    <string name="descending">Descending</string>
 </resources>
