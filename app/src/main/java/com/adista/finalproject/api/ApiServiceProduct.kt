@@ -22,4 +22,10 @@ interface ApiServiceProduct {
         @Path("category") category: String
     ): ResponseDataProduct
 
+    @GET("products")
+    suspend fun pagingProduct(
+        @Query("limit") limit: Int,
+        @Query("skip") skip: Int,
+    ): ResponseDataProduct
+
 }
