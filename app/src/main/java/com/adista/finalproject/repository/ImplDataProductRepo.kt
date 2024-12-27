@@ -4,6 +4,7 @@ import com.adista.finalproject.api.ApiServiceProduct
 import com.adista.finalproject.data.DataProduct
 import com.adista.finalproject.response_api.ResponseDataProduct
 import com.crocodic.core.api.ApiObserver
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -56,6 +57,7 @@ class ImplDataProductRepo @Inject constructor(private val apiServiceProduct: Api
 
     override fun pagingProducts(limit: Int, skip: Int): Flow<List<DataProduct>> {
         return flow {
+            delay(1000)//menambah delay 1 detik
             val response = apiServiceProduct.pagingProduct(limit, skip)
             emit(response.products ?: return@flow)
         }
