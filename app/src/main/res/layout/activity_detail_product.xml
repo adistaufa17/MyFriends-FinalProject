@@ -25,7 +25,8 @@
             android:layout_gravity="center"
             android:layout_margin="16dp"
             urlImage='@{data.thumbnail}'
-            android:src="@color/grey" />
+            android:src="@color/grey"
+            android:contentDescription="@string/image"/>
 
         <TextView
             android:layout_width="match_parent"

@@ -54,4 +54,5 @@
     <string name="order_products">Order Products</string>
     <string name="ascending">Ascending</string>
     <string name="descending">Descending</string>
+    <string name="image">Image</string>
 </resources>

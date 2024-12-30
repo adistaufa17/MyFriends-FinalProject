@@ -79,6 +79,7 @@ dependencies {
     implementation(libs.androidx.room.runtime.v250)
     implementation(libs.room.ktx)
     implementation(libs.play.services.analytics.impl)
+    //noinspection KaptUsageInsteadOfKsp
     kapt(libs.room.compiler)
 
     // Hilt Dependency Injection
