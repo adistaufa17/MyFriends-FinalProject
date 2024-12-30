@@ -26,8 +26,8 @@
             <!-- Profile Circle -->
         <androidx.cardview.widget.CardView
             android:id="@+id/profile_background"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
             app:cardCornerRadius="@dimen/_50sdp"
             app:cardElevation="@dimen/_4sdp"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,6 +37,7 @@
         <!-- Default Profile Image -->
         <ImageView
             android:id="@+id/iv_photo"
+            urlImage='@{data.thumbnail}'
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/ic_person"

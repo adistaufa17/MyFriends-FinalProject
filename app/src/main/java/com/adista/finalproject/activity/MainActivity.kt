@@ -23,9 +23,13 @@ import com.adista.finalproject.databinding.ActivityMainBinding
 import com.adista.finalproject.databinding.ItemFriendBinding
 import com.crocodic.core.base.activity.CoreActivity
 import com.crocodic.core.base.adapter.PaginationAdapter
+import com.crocodic.core.extension.openActivity
+import com.crocodic.core.extension.toJson
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout.activity_main), FriendAdapter.OnFriendClickListener {
@@ -35,14 +39,20 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
 
     private lateinit var adapter: FriendAdapter
 
+    @Inject
+    lateinit var gson: Gson
+
     private val adapterCore by lazy {
-        PaginationAdapter<ItemFriendBinding, DataProduct>(R.layout.item_friend)
+        PaginationAdapter<ItemFriendBinding, DataProduct>(R.layout.item_friend).initItem { position, data ->
+            openActivity<DetailProductActivity> {
+                val dataProduct = data.toJson(gson)
+                putExtra(DetailProductActivity.DATA, dataProduct)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         enableEdgeToEdge()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -107,7 +117,7 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
 //    }
 
     override fun onFriendClick(itemId: Int) {
-        val intent = Intent(this, DetailFriendActivity::class.java)
+        val intent = Intent(this, DetailProductActivity::class.java)
         intent.putExtra("PRODUCT_ID", itemId)
         startActivity(intent)
     }

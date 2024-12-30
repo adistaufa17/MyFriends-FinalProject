@@ -11,6 +11,7 @@ import com.adista.finalproject.database.FriendDao
 import com.adista.finalproject.database.MyDatabase
 import com.adista.finalproject.session.CoreSession
 import com.crocodic.core.helper.NetworkHelper
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,6 +23,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Provides
+    @Singleton
+    fun provideGson(): Gson {
+        return Gson()
+    }
 
     @Singleton
     @Provides

@@ -45,6 +45,7 @@ android {
 
     buildFeatures {
         viewBinding = true // Enable View Binding
+        //noinspection DataBindingWithoutKapt
         dataBinding = true // Enable Data Binding
     }
 
@@ -104,9 +105,12 @@ dependencies {
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)
 
+    implementation(libs.imageSlider)
+
 
 }
 
 kapt {
     correctErrorTypes = true
+    useBuildCache = true
 }

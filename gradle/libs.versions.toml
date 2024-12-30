@@ -37,6 +37,7 @@ sspAndroid = "1.1.1"
 databindingRuntime = "8.5.2"
 coreCrocodic = "4.0.11"
 playServicesAnalyticsImpl = "18.2.0"
+imageSlider = "0.1.2"
 
 [libraries]
 androidcoreproject = { module = "com.github.crocodic-studio:AndroidCoreProject", version.ref = "androidcoreproject" }
@@ -77,6 +78,9 @@ material-v161 = { module = "com.google.android.material:material", version.ref =
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+imageSlider = {group = "com.github.denzcoskun", name = "ImageSlideshow", version.ref = "imageSlider"}
+
+
 
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version = "2.8.4" }
 lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version = "2.8.4" }

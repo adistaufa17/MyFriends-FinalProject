@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.adista.finalproject.data.DataProduct" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".activity.DetailProductActivity">
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            urlImage='@{data.thumbnail}'
+            android:src="@color/grey" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:text='@{data.title}'
+            android:textAlignment="center"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="Title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="4dp"
+            android:text='@{data.description}'
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            tools:text="Description" />
+
+
+    </LinearLayout>
+
+</layout>
