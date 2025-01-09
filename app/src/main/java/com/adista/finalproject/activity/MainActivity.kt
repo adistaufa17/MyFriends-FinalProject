@@ -70,6 +70,9 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
         lifecycleScope.launch {
             friendViewModel.queries.emit(Triple("", "", ""))
         }
+        friendViewModel.getSlider()
+
+
         binding.searchBar.doOnTextChanged { text, start, before, count ->
             val keyword = "%${text.toString().trim()}%"
 //            viewModel.getFriend(keyword)
@@ -78,6 +81,12 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
+                launch {
+                    friendViewModel.slider.collectLatest { data ->
+                        binding.ivSlider.setImageList(data)
+                    }
+                }
+
                 launch {
                     friendViewModel.getPagingProducts().collectLatest { data : PagingData<DataProduct> ->
                         //productList = data as ArrayList<DataProduct> // Simpan data produk

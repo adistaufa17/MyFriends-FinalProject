@@ -1,5 +1,6 @@
 package com.adista.finalproject.ViewModel
 
+import android.transition.Slide
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
@@ -12,6 +13,7 @@ import com.adista.finalproject.repository.FriendRepository
 import com.adista.finalproject.repository.ImplDataProductRepo
 import com.crocodic.core.base.adapter.CorePagingSource
 import com.crocodic.core.base.viewmodel.CoreViewModel
+import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -45,6 +47,20 @@ class FriendViewModel @Inject constructor(
         }
     }
 
+    private val _slider = MutableSharedFlow<List<SlideModel>>()
+    val slider = _slider.asSharedFlow()
+
+    fun getSlider() = viewModelScope.launch {
+        dataProductRepo.getSlider().collect{
+            val data = ArrayList<SlideModel>()
+            it.forEach {photo->
+                data.add(SlideModel(photo.thumbnail, photo.title))
+            }
+            _slider.emit(data)
+        }
+    }
+
+    
     private val _product = MutableSharedFlow<List<DataProduct>>()
     val product = _product.asSharedFlow()
 

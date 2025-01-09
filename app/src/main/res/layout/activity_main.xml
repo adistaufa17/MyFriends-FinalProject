@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".pertemuan12.ListFriendActivity">
+        tools:context=".activity.MainActivity">
+
 
         <!-- Header with Gradient -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header_layout"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_120sdp"
+            android:layout_height="wrap_content"
             style="@style/Toolbar"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -38,6 +39,31 @@
                 app:layout_constraintTop_toTopOf="@id/tv_name"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
 
+            <androidx.cardview.widget.CardView
+                android:id="@+id/slider_container"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                app:cardCornerRadius="@dimen/_12sdp"
+                app:cardElevation="@dimen/_4sdp"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/iv_slider"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    app:iss_auto_cycle="true"
+                    app:iss_delay="1000"
+                    app:iss_period="2000"
+                    app:layout_constraintDimensionRatio="16:9"/>
+
+            </androidx.cardview.widget.CardView>
+
+
             <!-- Search Bar -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/search_container"
@@ -48,7 +74,8 @@
                 app:cardCornerRadius="@dimen/_25sdp"
                 app:cardElevation="@dimen/_4sdp"
                 style="@style/search"
-                app:layout_constraintTop_toBottomOf="@id/tv_name">
+                app:layout_constraintTop_toBottomOf="@id/slider_container"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <EditText
                     android:id="@+id/search_bar"
