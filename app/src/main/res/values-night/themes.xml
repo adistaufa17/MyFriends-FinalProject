@@ -82,7 +82,7 @@
 
     <style name="btn_add">
         <item name="tint">@color/white</item>
-        <item name="backgroundTint">@color/bluedark</item>app:backgroundTint="@color/seagreen"
-        <item name="android:layout_margin">@dimen/_30sdp</item>
+        <item name="backgroundTint">@color/bluedark</item>
+        <item name="android:layout_margin">@dimen/_10sdp</item>
     </style>
 </resources>

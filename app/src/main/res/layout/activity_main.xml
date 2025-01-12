@@ -119,31 +119,39 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:listitem="@layout/item_friend" />
-
-                    <!-- Floating Action Buttons -->
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fbtn_filter"
-                        style="@style/btn_add"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/button_add"
-                        android:src="@drawable/ic_filter"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/fbtn_sort"
-                        style="@style/btn_add"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/button_add"
-                        android:src="@drawable/ic_sort"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/fbtn_filter"
-                        tools:ignore="ImageContrastCheck,RedundantDescriptionCheck,DuplicateSpeakableTextCheck" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <!-- Linear Layout untuk FAB -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:orientation="horizontal"
+            android:spacing="0dp">
+
+             <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fbtn_sort"
+                style="@style/btn_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/button_add"
+                android:src="@drawable/ic_sort"
+                tools:ignore="ImageContrastCheck,RedundantDescriptionCheck,DuplicateSpeakableTextCheck" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fbtn_filter"
+                style="@style/btn_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/button_add"
+                android:src="@drawable/ic_filter"
+                tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+
+        </LinearLayout>
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

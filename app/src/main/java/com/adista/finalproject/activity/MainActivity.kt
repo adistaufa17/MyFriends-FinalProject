@@ -43,7 +43,7 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
     lateinit var gson: Gson
 
     private val adapterCore by lazy {
-        PaginationAdapter<ItemFriendBinding, DataProduct>(R.layout.item_friend).initItem { position, data ->
+        PaginationAdapter<ItemFriendBinding, DataProduct>(R.layout.item_friend).initItem { _, data ->
             openActivity<DetailProductActivity> {
                 val dataProduct = data.toJson(gson)
                 putExtra(DetailProductActivity.DATA, dataProduct)
@@ -73,7 +73,7 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
         friendViewModel.getSlider()
 
 
-        binding.searchBar.doOnTextChanged { text, start, before, count ->
+        binding.searchBar.doOnTextChanged { text, _, _, _ ->
             val keyword = "%${text.toString().trim()}%"
 //            viewModel.getFriend(keyword)
             friendViewModel.getProducts(keyword)

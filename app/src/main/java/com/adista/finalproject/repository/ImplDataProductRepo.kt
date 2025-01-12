@@ -59,7 +59,7 @@ class ImplDataProductRepo @Inject constructor(private val apiServiceProduct: Api
         return flow {
             delay(1000)//menambah delay 1 detik
             val response = apiServiceProduct.pagingProduct(limit, skip)
-            emit(response.products ?: return@flow)
+            emit(response.products)
         }
     }
 

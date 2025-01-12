@@ -1,6 +1,5 @@
 package com.adista.finalproject.ViewModel
 
-import android.transition.Slide
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
