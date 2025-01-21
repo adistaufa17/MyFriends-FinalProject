@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "c4c8627c420451ab1eb8acd47aab9941",
+    "identityHash": "3d43c6d648fab33bfe81582285e16217",
     "entities": [
       {
         "tableName": "friends",
@@ -54,12 +54,56 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "user",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idDb` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `idUser` INTEGER NOT NULL, `name` TEXT, `email` TEXT, `profile` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "idDb",
+            "columnName": "idDb",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idUser",
+            "columnName": "idUser",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "profile",
+            "columnName": "profile",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "idDb"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c4c8627c420451ab1eb8acd47aab9941')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3d43c6d648fab33bfe81582285e16217')"
     ]
   }
 }

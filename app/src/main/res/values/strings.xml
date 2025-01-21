@@ -55,4 +55,12 @@
     <string name="ascending">Ascending</string>
     <string name="descending">Descending</string>
     <string name="image">Image</string>
+    <string name="login">Login</string>
+    <string name="login_with_biometric">Login with Biometric</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="use_your_registered_account_information">Use your registered account information</string>
+    <string name="image_login">Image login</string>
+    <string name="logout">Logout</string>
+    <string name="token">Token:</string>
 </resources>

@@ -1,7 +1,6 @@
 package com.adista.finalproject.ViewModel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingData
@@ -61,7 +60,7 @@ class FriendViewModel @Inject constructor(
 
     
     private val _product = MutableSharedFlow<List<DataProduct>>()
-    val product = _product.asSharedFlow()
+    //val product = _product.asSharedFlow()
 
     fun getProducts(keyword: String = "") = viewModelScope.launch {
         dataProductRepo.getProducts(keyword).collect {
@@ -81,9 +80,9 @@ class FriendViewModel @Inject constructor(
         }
     }
 
-    fun getAllFriends(): LiveData<List<Friend>> {
-        return friendRepository.getAllFriends().asLiveData()
-    }
+    //fun getAllFriends(): LiveData<List<Friend>> {
+//        return friendRepository.getAllFriends().asLiveData()
+//    }
 
     fun getFriendById(friendId: Int): LiveData<Friend?> {
         return friendRepository.getFriendById(friendId)

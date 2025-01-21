@@ -39,6 +39,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+            <Button
+                android:id="@+id/btn_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="Setting"
+                app:layout_constraintEnd_toStartOf="@id/switch_night"
+                app:layout_constraintTop_toTopOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- Scrollable Content -->
@@ -132,6 +143,7 @@
             android:layout_marginEnd="@dimen/_16sdp"
             android:orientation="horizontal"
             android:spacing="0dp">
+
 
              <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fbtn_sort"

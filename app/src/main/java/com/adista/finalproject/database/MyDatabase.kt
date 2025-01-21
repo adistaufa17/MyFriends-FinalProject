@@ -4,18 +4,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import android.content.Context
-import androidx.room.AutoMigration
 
 @Database(
-    entities =[Friend::class],
-    version = 2,
-    exportSchema = true,
-    autoMigrations = [
-        AutoMigration(1, 2)
-    ]
+    entities = [Friend::class, User::class],
+    version = 1,
+    exportSchema = true
 )
 abstract class MyDatabase : RoomDatabase() {
     abstract fun friendDao(): FriendDao
+    abstract fun userDao(): UserDao
 
     companion object {
         @Volatile

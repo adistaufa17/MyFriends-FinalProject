@@ -2,6 +2,7 @@ package com.adista.finalproject.activity
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -15,14 +16,17 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.PagingData
 import com.adista.finalproject.R
 import com.adista.finalproject.ViewModel.FriendViewModel
+import com.adista.finalproject.activity.settings.TrialSettingActivity
 import com.adista.finalproject.adapter.FriendAdapter
 import com.adista.finalproject.btm_sht.BottomSheetFilterProducts
 import com.adista.finalproject.btm_sht.BottomSheetSortingProducts
 import com.adista.finalproject.data.DataProduct
+import com.adista.finalproject.database.UserDao
 import com.adista.finalproject.databinding.ActivityMainBinding
 import com.adista.finalproject.databinding.ItemFriendBinding
 import com.crocodic.core.base.activity.CoreActivity
 import com.crocodic.core.base.adapter.PaginationAdapter
+import com.crocodic.core.data.CoreSession
 import com.crocodic.core.extension.openActivity
 import com.crocodic.core.extension.toJson
 import com.google.gson.Gson
@@ -35,12 +39,14 @@ import javax.inject.Inject
 class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout.activity_main), FriendAdapter.OnFriendClickListener {
 
     private val friendViewModel: FriendViewModel by viewModels()
-    private var productList = ArrayList<DataProduct>()
-
-    private lateinit var adapter: FriendAdapter
-
+   // private var productList = ArrayList<DataProduct>()
+    //private lateinit var adapter: FriendAdapter
     @Inject
     lateinit var gson: Gson
+    @Inject
+    lateinit var userDao: UserDao
+    @Inject
+    lateinit var coreSession: CoreSession
 
     private val adapterCore by lazy {
         PaginationAdapter<ItemFriendBinding, DataProduct>(R.layout.item_friend).initItem { _, data ->
@@ -59,11 +65,10 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+        setView()
         binding.switchNight.setOnCheckedChangeListener { _, isChecked ->
             switchMode(isChecked)
         }
-
        // adapter = FriendAdapter(this, emptyList(), this)
         binding.rvShowData.adapter = adapterCore
 
@@ -71,7 +76,6 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
             friendViewModel.queries.emit(Triple("", "", ""))
         }
         friendViewModel.getSlider()
-
 
         binding.searchBar.doOnTextChanged { text, _, _, _ ->
             val keyword = "%${text.toString().trim()}%"
@@ -96,6 +100,7 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
             }
         }
 
+
         binding.fbtnFilter.setOnClickListener {
             val btmSht = BottomSheetFilterProducts { filter ->
                 friendViewModel.filterProducts(filter)
@@ -108,6 +113,18 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
                 friendViewModel.sortProducts(sortBy, order)
             }
             btmSht.show(supportFragmentManager, "BtmShtSortingProducts")
+        }
+    }
+
+    private fun setView() {
+        binding.btnSetting.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        when(v){
+            binding.btnSetting -> {
+                openActivity<TrialSettingActivity>()
+            }
         }
     }
 

@@ -6,6 +6,7 @@ buildscript {
     }
     dependencies {
         classpath(libs.hilt.android.gradle.plugin)
+        classpath(libs.perf.plugin)
     }
 }
 

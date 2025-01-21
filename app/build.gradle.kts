@@ -2,11 +2,12 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("androidx.room") version "2.6.1" // Add this line for Room
+    id("androidx.room") version "2.6.1"
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
     id("com.google.gms.google-services")
     id("com.google.firebase.crashlytics")
+    id("com.google.firebase.firebase-perf")  // Added Firebase Performance plugin
     id("kotlin-parcelize")
 }
 
@@ -22,7 +23,6 @@ android {
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
 
     buildTypes {
         release {
@@ -44,23 +44,22 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true // Enable View Binding
-        //noinspection DataBindingWithoutKapt
-        dataBinding = true // Enable Data Binding
+        viewBinding = true
+        dataBinding = true
     }
 
-    // Correctly set up Room schema directory
     room {
-        schemaDirectory("$projectDir/schemas") // This line is not necessary if already set in kapt
+        schemaDirectory("$projectDir/schemas")
     }
 }
 
 dependencies {
-    // AndroidX Core Libraries
+    // Existing dependencies
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     implementation(libs.androidcoreproject.v300beta7)
@@ -79,19 +78,19 @@ dependencies {
     implementation(libs.androidx.room.runtime.v250)
     implementation(libs.room.ktx)
     implementation(libs.play.services.analytics.impl)
-    //noinspection KaptUsageInsteadOfKsp
     kapt(libs.room.compiler)
 
     // Hilt Dependency Injection
     implementation(libs.hilt.android.v252)
     kapt(libs.hilt.android.compiler)
 
-    // Hilt viewModel specific dependencies (if needed)
+    // Hilt viewModel specific dependencies
     implementation(libs.androidx.hilt.navigation.fragment)
 
-    // Firebase Analytics and Crashlytics
+    // Firebase Components
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
+    implementation("com.google.firebase:firebase-perf-ktx")  // Added Firebase Performance dependency
 
     // Data Binding Runtime
     implementation(libs.androidx.databinding.runtime)
@@ -102,14 +101,10 @@ dependencies {
 
     implementation(libs.coreCrocodic)
 
-    // Other Libraries (e.g., Glide, SDP, SSP)
+    // Other Libraries
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)
-
-
     implementation(libs.imageSlider)
-
-
 }
 
 kapt {
