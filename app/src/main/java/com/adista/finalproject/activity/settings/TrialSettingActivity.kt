@@ -14,15 +14,13 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.adista.finalproject.R
 import com.adista.finalproject.databinding.ActivityTrialSettingBinding
 import com.adista.finalproject.login.LoginActivity
+import com.crocodic.core.api.ApiStatus
 import com.crocodic.core.base.activity.CoreActivity
 import com.crocodic.core.data.CoreSession
 import com.crocodic.core.extension.clearNotification
 import com.crocodic.core.extension.openActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import com.crocodic.core.api.ApiStatus
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.selects.whileSelect
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -43,7 +41,7 @@ class TrialSettingActivity :
         checkBiometricCapability()
 
         binding.swBiometric.isChecked = session.getBoolean(BIOMETRIC_STATUS)
-        binding.swBiometric.setOnCheckedChangeListener { compoundButton, b ->
+        binding.swBiometric.setOnCheckedChangeListener { _, b ->
             session.setValue(BIOMETRIC_STATUS,b)
         }
 

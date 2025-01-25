@@ -35,7 +35,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
-                android:text=""
+                android:contentDescription="@string/night_mode_switch"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
@@ -45,14 +45,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginBottom="8dp"
-                android:text="Setting"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:text="@string/setting"
                 app:layout_constraintEnd_toStartOf="@id/switch_night"
                 app:layout_constraintTop_toTopOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- Scrollable Content -->
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -65,7 +63,6 @@
                 android:orientation="vertical"
                 style="@style/Toolbar">
 
-                <!-- Image Slider -->
                 <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/iv_slider"
                     android:layout_width="match_parent"
@@ -75,7 +72,6 @@
                     app:iss_delay="1500"
                     app:iss_period="2500" />
 
-                <!-- Search Bar -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/search_container"
                     android:layout_width="match_parent"
@@ -99,7 +95,6 @@
                         tools:ignore="Autofill,TextContrastCheck,VisualLintTextFieldSize" />
                 </androidx.cardview.widget.CardView>
 
-                <!-- Content Section -->
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -116,7 +111,6 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent" />
 
-                    <!-- RecyclerView -->
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_show_data"
                         style="@style/bg_all"
@@ -133,37 +127,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
-        <!-- Linear Layout untuk FAB -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginBottom="@dimen/_16sdp"
-            android:layout_marginEnd="@dimen/_16sdp"
-            android:orientation="horizontal"
-            android:spacing="0dp">
-
-
-             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fbtn_sort"
-                style="@style/btn_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/button_add"
-                android:src="@drawable/ic_sort"
-                tools:ignore="ImageContrastCheck,RedundantDescriptionCheck,DuplicateSpeakableTextCheck" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fbtn_filter"
-                style="@style/btn_add"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/button_add"
-                android:src="@drawable/ic_filter"
-                tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
-
-        </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

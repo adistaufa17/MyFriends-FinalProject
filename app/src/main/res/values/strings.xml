@@ -64,4 +64,6 @@
     <string name="logout">Logout</string>
     <string name="token">Token:</string>
     <string name="enable_biometric_login">Enable Biometric Login</string>
+    <string name="setting">Setting</string>
+    <string name="night_mode_switch">Night Mode Switch</string>
 </resources>

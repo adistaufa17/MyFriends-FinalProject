@@ -18,8 +18,6 @@ import com.adista.finalproject.R
 import com.adista.finalproject.ViewModel.FriendViewModel
 import com.adista.finalproject.activity.settings.TrialSettingActivity
 import com.adista.finalproject.adapter.FriendAdapter
-import com.adista.finalproject.btm_sht.BottomSheetFilterProducts
-import com.adista.finalproject.btm_sht.BottomSheetSortingProducts
 import com.adista.finalproject.data.DataProduct
 import com.adista.finalproject.database.UserDao
 import com.adista.finalproject.databinding.ActivityMainBinding
@@ -101,19 +99,19 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
         }
 
 
-        binding.fbtnFilter.setOnClickListener {
-            val btmSht = BottomSheetFilterProducts { filter ->
-                friendViewModel.filterProducts(filter)
-            }
-            btmSht.show(supportFragmentManager, "BtmShtFilteringProducts")
-        }
-
-        binding.fbtnSort.setOnClickListener {
-            val btmSht = BottomSheetSortingProducts { sortBy, order ->
-                friendViewModel.sortProducts(sortBy, order)
-            }
-            btmSht.show(supportFragmentManager, "BtmShtSortingProducts")
-        }
+//        binding.fbtnFilter.setOnClickListener {
+//            val btmSht = BottomSheetFilterProducts { filter ->
+//                friendViewModel.filterProducts(filter)
+//            }
+//            btmSht.show(supportFragmentManager, "BtmShtFilteringProducts")
+//        }
+//
+//        binding.fbtnSort.setOnClickListener {
+//            val btmSht = BottomSheetSortingProducts { sortBy, order ->
+//                friendViewModel.sortProducts(sortBy, order)
+//            }
+//            btmSht.show(supportFragmentManager, "BtmShtSortingProducts")
+//        }
     }
 
     private fun setView() {
