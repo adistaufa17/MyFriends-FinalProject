@@ -101,6 +101,8 @@ dependencies {
 
     implementation(libs.coreCrocodic)
 
+    implementation("androidx.biometric:biometric-ktx:1.2.0-alpha05")
+
     // Other Libraries
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)

@@ -104,6 +104,14 @@
                     android:text="@string/login"
                     tools:ignore="VisualLintButtonSize,DuplicateSpeakableTextCheck" />
 
+                <Button
+                    android:id="@+id/btn_login_biometric"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="16dp"
+                    android:text="Login with Biometric" />
+
 
             </LinearLayout>
 

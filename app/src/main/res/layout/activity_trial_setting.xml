@@ -10,6 +10,11 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/sw_biometric"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enable_biometric_login"/>
 
         <Button
             android:id="@+id/btn_logout"

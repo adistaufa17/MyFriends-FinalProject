@@ -41,6 +41,7 @@ playServicesAnalyticsImpl = "18.2.0"
 
 imageSlider = "0.1.2"
 firebaseFirestoreKtx = "25.1.1"
+biometric = "1.2.0-alpha05"
 
 [libraries]
 androidcoreproject = { module = "com.github.crocodic-studio:AndroidCoreProject", version.ref = "androidcoreproject" }
@@ -84,7 +85,7 @@ room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
 imageSlider = {group = "com.github.denzcoskun", name = "ImageSlideshow", version.ref = "imageSlider"}
-
+biometric = {group = "androidx.biometric", name = "biometric", version.ref = "biometric"}
 
 
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version = "2.8.4" }

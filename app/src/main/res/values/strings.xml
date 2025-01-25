@@ -63,4 +63,5 @@
     <string name="image_login">Image login</string>
     <string name="logout">Logout</string>
     <string name="token">Token:</string>
+    <string name="enable_biometric_login">Enable Biometric Login</string>
 </resources>
