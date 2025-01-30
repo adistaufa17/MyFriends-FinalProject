@@ -116,10 +116,12 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
 
     private fun setView() {
         binding.btnSetting.setOnClickListener(this)
+        binding.btnMap.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when(v){
+            binding.btnMap -> openActivity<MapsActivity>()
             binding.btnSetting -> {
                 openActivity<TrialSettingActivity>()
             }

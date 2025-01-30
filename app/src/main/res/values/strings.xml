@@ -66,4 +66,5 @@
     <string name="enable_biometric_login">Enable Biometric Login</string>
     <string name="setting">Setting</string>
     <string name="night_mode_switch">Night Mode Switch</string>
+    <string name="maps_view">Maps View</string>
 </resources>

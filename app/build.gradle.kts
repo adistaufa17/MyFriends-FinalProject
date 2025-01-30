@@ -101,6 +101,8 @@ dependencies {
 
     implementation(libs.coreCrocodic)
 
+    implementation ("com.google.android.gms:play-services-maps:18.2.0")
+
     implementation("androidx.biometric:biometric-ktx:1.2.0-alpha05")
 
     // Other Libraries
