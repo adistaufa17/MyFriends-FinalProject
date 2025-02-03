@@ -1,27 +1,28 @@
 package com.adista.finalproject.activity
 
+import android.annotation.SuppressLint
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.adista.finalproject.AddressHelper
 import com.adista.finalproject.R
 import com.adista.finalproject.databinding.ActivityMapsBinding
 import com.crocodic.core.base.activity.NoViewModelActivity
 import com.crocodic.core.extension.checkLocationPermission
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class MapsActivity : NoViewModelActivity<ActivityMapsBinding>(R.layout.activity_maps), OnMapReadyCallback {
+class MapsActivity : NoViewModelActivity<ActivityMapsBinding>(R.layout.activity_maps){
 
-    private lateinit var googleMap: GoogleMap
+    @Inject
+    lateinit var adrHelper : AddressHelper
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,40 +34,35 @@ class MapsActivity : NoViewModelActivity<ActivityMapsBinding>(R.layout.activity_
 
         binding.mapView.onCreate(savedInstanceState)
 
-        binding.mapView.getMapAsync(this)
-    }
-
-    override fun onMapReady(map: GoogleMap) {
-        googleMap = map
-        googleMap.uiSettings.isZoomControlsEnabled = true
-        googleMap.uiSettings.isCompassEnabled = true
-
-        val defaultLocation = LatLng(-6.200000, 106.816666)
-        googleMap.addMarker(
-            MarkerOptions()
-                .position(defaultLocation)
-                .title("Jakarta")
-                .snippet("Ibu Kota Indonesia")
-        )
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, 15f))
-
         checkLocationPermission {
             listenLocationChange()
         }
+
+        binding.mapView.getMapAsync{ googleMap ->
+            googleMap.setOnCameraMoveListener {
+                binding.ivTarget.alpha = 0.5f
+            }
+
+            googleMap.setOnCameraIdleListener {
+                binding.ivTarget.alpha = 1f
+
+                val curLocation = googleMap.cameraPosition.target
+                binding.tvLocation.text = "Lat: ${curLocation.latitude} \nLng: ${curLocation.longitude}"
+
+                adrHelper.getAddress(LatLng(curLocation.latitude,curLocation.longitude)) {
+                    binding.tvAddress.text = it
+                }
+            }
+        }
     }
+
+
 
     override fun retrieveLocationChange(location: Location) {
         super.retrieveLocationChange(location)
         Log.d("deviceLocation", "latitude: ${location.latitude}, longitude: ${location.longitude}")
 
-        val userLocation = LatLng(location.latitude, location.longitude)
-        googleMap.addMarker(
-            MarkerOptions()
-                .position(userLocation)
-                .title("Lokasi Anda")
-        )
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
-    }
+       }
 
     override fun onStart() {
         super.onStart()

@@ -1,7 +1,9 @@
 package com.adista.finalproject.di
 
 import android.content.Context
+import android.location.Geocoder
 import androidx.room.Room
+import com.adista.finalproject.AddressHelper
 import com.adista.finalproject.api.ApiAuthService
 import com.adista.finalproject.api.ApiServiceProduct
 import com.adista.finalproject.repository.DataProductRepo
@@ -21,6 +23,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.Locale
 import javax.inject.Singleton
 
 @Module
@@ -37,6 +40,18 @@ object AppModule {
     @Singleton
     fun provideCoreSession(@ApplicationContext context: Context): CoreSession {
         return CoreSession(context)
+    }
+
+    @Singleton
+    @Provides
+    fun provideGeocoder(@ApplicationContext context: Context): Geocoder {
+        return Geocoder(context, Locale.getDefault())
+    }
+
+    @Singleton
+    @Provides
+    fun provideAddressHelper(geocoder: Geocoder): AddressHelper {
+        return AddressHelper(geocoder)
     }
 
     @Provides

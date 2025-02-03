@@ -67,4 +67,8 @@
     <string name="setting">Setting</string>
     <string name="night_mode_switch">Night Mode Switch</string>
     <string name="maps_view">Maps View</string>
+    <string name="status">Status</string>
+    <string name="target_pin">Target Pin</string>
+    <string name="location">Location</string>
+    <string name="address">Address</string>
 </resources>
