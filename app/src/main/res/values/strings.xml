@@ -71,4 +71,8 @@
     <string name="target_pin">Target Pin</string>
     <string name="location">Location</string>
     <string name="address">Address</string>
+    <string name="lbl_permission_notification">lbl_permission_notification</string>
+    <string name="lbl_setting">lbl_setting</string>
+    <string name="show_notification">Show Notification</string>
+    <string name="request_notification">Request Notification</string>
 </resources>

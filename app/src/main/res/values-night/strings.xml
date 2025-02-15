@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="lbl_permission_notification">lbl_permission_notification</string>
+    <string name="lbl_setting">lbl_setting</string>
+</resources>

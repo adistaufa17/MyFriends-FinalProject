@@ -42,6 +42,7 @@ playServicesAnalyticsImpl = "18.2.0"
 imageSlider = "0.1.2"
 firebaseFirestoreKtx = "25.1.1"
 biometric = "1.2.0-alpha05"
+workRuntimeKtx = "2.9.0"
 
 [libraries]
 androidcoreproject = { module = "com.github.crocodic-studio:AndroidCoreProject", version.ref = "androidcoreproject" }
@@ -98,6 +99,7 @@ androidx-databinding-runtime = { group = "androidx.databinding", name = "databin
 coreCrocodic = {group = "com.github.crocodic-studio", name = "AndroidCoreProject", version.ref = "coreCrocodic"}
 play-services-analytics-impl = { group = "com.google.android.gms", name = "play-services-analytics-impl", version.ref = "playServicesAnalyticsImpl" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+androidx-work-runtime-ktx = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "workRuntimeKtx" }
 
 
 [plugins]
