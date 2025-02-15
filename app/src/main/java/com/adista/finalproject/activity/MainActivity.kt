@@ -17,6 +17,7 @@ import androidx.paging.PagingData
 import com.adista.finalproject.R
 import com.adista.finalproject.ViewModel.FriendViewModel
 import com.adista.finalproject.activity.settings.TrialSettingActivity
+import com.adista.finalproject.activity.work_manager.WorkManagerActivity
 import com.adista.finalproject.adapter.FriendAdapter
 import com.adista.finalproject.data.DataProduct
 import com.adista.finalproject.database.UserDao
@@ -117,6 +118,7 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
     private fun setView() {
         binding.btnSetting.setOnClickListener(this)
         binding.btnMap.setOnClickListener(this)
+        binding.btnNotification.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -124,6 +126,9 @@ class MainActivity : CoreActivity<ActivityMainBinding, FriendViewModel>(R.layout
             binding.btnMap -> openActivity<MapsActivity>()
             binding.btnSetting -> {
                 openActivity<TrialSettingActivity>()
+            }
+            binding.btnNotification -> {
+                openActivity<WorkManagerActivity>()
             }
         }
     }

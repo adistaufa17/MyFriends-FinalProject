@@ -126,7 +126,7 @@
             android:layout_gravity="bottom|end"
             android:layout_marginBottom="@dimen/_16sdp"
             android:layout_marginEnd="@dimen/_16sdp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:spacing="0dp">
 
 
@@ -148,6 +148,17 @@
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/button_add"
                 android:src="@drawable/ic_map"
+                android:clickable="true"
+                android:focusable="true"
+                tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btn_notification"
+                style="@style/btn_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/button_add"
+                android:src="@drawable/notification_icon"
                 android:clickable="true"
                 android:focusable="true"
                 tools:ignore="ImageContrastCheck,RedundantDescriptionCheck" />
