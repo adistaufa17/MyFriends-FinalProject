@@ -66,14 +66,13 @@ class WorkManagerActivity :
     }
 
     private fun createInAppNotification() {
-        val inputText = binding.etCount.text.toString().trim() // Ambil input dan hapus spasi
+        val inputText = binding.etCount.text.toString().trim()
         if (inputText.isEmpty()) {
-            // Tampilkan pesan kesalahan jika input kosong
             Toast.makeText(this, "Please enter a valid number", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val inputSecond = inputText.toLong() // Konversi ke Long setelah pemeriksaan
+        val inputSecond = inputText.toLong()
 
         val notificationWorkRequest: WorkRequest =
             OneTimeWorkRequestBuilder<InAppNotificationWorker>()
@@ -159,7 +158,7 @@ class WorkManagerActivity :
                 this,
                 Manifest.permission.POST_NOTIFICATIONS
             ) == PackageManager.PERMISSION_GRANTED -> {
-                // You can use the API that requires the permission.
+
             }
 
             shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) -> {

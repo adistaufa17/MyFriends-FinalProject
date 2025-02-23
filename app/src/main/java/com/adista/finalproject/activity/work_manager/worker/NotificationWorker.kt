@@ -50,7 +50,7 @@ class NotificationWorker(private val context: Context, workerParams: WorkerParam
             ) {
                 return
             }
-            // notificationId is a unique int for each notification that you must define.
+
             notify(1, builder.build())
         }
     }
