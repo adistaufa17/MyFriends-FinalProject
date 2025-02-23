@@ -7,6 +7,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -17,7 +18,7 @@ import com.adista.finalproject.activity.work_manager.WorkManagerActivity
 
 
 class NotificationWorker(private val context: Context, workerParams: WorkerParameters) :
-Worker(context, workerParams) {
+    Worker(context, workerParams) {
 
     override fun doWork(): Result {
         showNotification("Halo Gais!", "Saya sedang belajar membuat notifikasi dengan Work Manager")
@@ -28,7 +29,7 @@ Worker(context, workerParams) {
         createNotificationChannel()
 
         val intent = Intent(context, WorkManagerActivity::class.java).apply {
-            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
 
         val pendingIntent: PendingIntent =
@@ -57,17 +58,19 @@ Worker(context, workerParams) {
 
 
     private fun createNotificationChannel() {
-        val channel = NotificationChannel(
-            WorkManagerActivity.CHANNEL_ID,
-            WorkManagerActivity.CHANNEL_NAME,
-            NotificationManager.IMPORTANCE_DEFAULT
-        ).apply {
-            description = WorkManagerActivity.CHANNEL_DESCRIPTION
-        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                WorkManagerActivity.CHANNEL_ID,
+                WorkManagerActivity.CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_DEFAULT
+            ).apply {
+                description = WorkManagerActivity.CHANNEL_DESCRIPTION
+            }
 
-        val notificationManager: NotificationManager =
-            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.createNotificationChannel(channel)
+            val notificationManager: NotificationManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
     }
 
 }
