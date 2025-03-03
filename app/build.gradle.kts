@@ -106,6 +106,8 @@ dependencies {
 
     implementation("androidx.biometric:biometric-ktx:1.2.0-alpha05")
 
+    implementation(libs.firebase.messaging)
+
     // Other Libraries
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)
