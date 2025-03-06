@@ -26,18 +26,8 @@ class PushNotificationActivity :
     }
 
     private fun getFcmToken() {
-        try {
-            Log.d("firebase-token", "Getting FCM token...")
-            FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val token = task.result
-                    Log.d("firebase-token", "Token: $token")
-                } else {
-                    Log.e("firebase-token", "Fetching FCM registration token failed", task.exception)
-                }
-            }
-        } catch (e: Exception) {
-            Log.e("firebase-token", "Exception while getting token", e)
+        generateFirebaseToken {FcmToken ->
+            Log.d("firebase-token", FcmToken)
         }
     }
 

@@ -45,6 +45,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        //noinspection DataBindingWithoutKapt
         dataBinding = true
     }
 
@@ -91,7 +92,8 @@ dependencies {
     // Firebase Components
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
-    implementation("com.google.firebase:firebase-perf-ktx")  // Added Firebase Performance dependency
+    implementation("com.google.firebase:firebase-perf-ktx")
+
 
     // Data Binding Runtime
     implementation(libs.androidx.databinding.runtime)
@@ -106,15 +108,18 @@ dependencies {
 
     implementation("androidx.biometric:biometric-ktx:1.2.0-alpha05")
 
-    implementation(libs.firebase.messaging)
-
+    implementation("com.google.firebase:firebase-auth:22.1.1")
+    implementation("com.google.firebase:firebase-crashlytics:18.5.0'")
     // Other Libraries
     implementation(libs.sdp.android)
     implementation(libs.ssp.android)
     implementation(libs.imageSlider)
+
+
 }
 
 kapt {
     correctErrorTypes = true
     useBuildCache = true
 }
+
