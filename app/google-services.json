@@ -12,7 +12,20 @@
           "package_name": "com.adista.finalproject"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "480980071520-afjut6qjlksi8aj6i1ultoff2k893dii.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.adista.finalproject",
+            "certificate_hash": "360808c93b2fedbd7bd3c2d1a529b300a83d487c"
+          }
+        },
+        {
+          "client_id": "480980071520-4vgh8hpj2lm7hu4n49le03mo5giasi3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBldyk1kUyaxHkMY-JwlSVUpNy6aMAIbYE"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "480980071520-4vgh8hpj2lm7hu4n49le03mo5giasi3k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
